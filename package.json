@@ -44,5 +44,6 @@
   "bugs": {
     "url": "https://github.com/ravisraval/RunAway/issues"
   },
-  "homepage": "https://github.com/ravisraval/RunAway#readme"
+  "homepage": "https://github.com/ravisraval/RunAway#readme",
+  "devDependencies": {}
 }
