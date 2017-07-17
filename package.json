@@ -36,13 +36,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ravisraval/StravaClone.git"
+    "url": "git+https://github.com/ravisraval/RunAway.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ravisraval/StravaClone/issues"
+    "url": "https://github.com/ravisraval/RunAway/issues"
   },
-  "homepage": "https://github.com/ravisraval/StravaClone#readme"
+  "homepage": "https://github.com/ravisraval/RunAway#readme"
 }
