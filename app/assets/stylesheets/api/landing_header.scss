@@ -1,0 +1,47 @@
+.landing-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  height: 15%;
+
+  border-bottom: 3px solid gray;
+
+  ul {
+    margin-left: 25%;
+    display: flex;
+    border: 3px dashed orange;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    font-size: 12px;
+    li {
+      margin: 0 9px;
+    }
+
+    li:hover {
+      cursor: pointer;
+    }
+    li:first-child {
+      border: 2px solid black;
+      position: absolute;
+      left:0;
+      cursor: none;
+      font-size: 18px;
+
+    }
+  }
+
+  button {
+    font-size: 18px;
+    height: 40px;
+    width: 150px;
+    border-radius: 20px;
+  }
+  
+  button:focus{
+    outline:none;
+ }
+}

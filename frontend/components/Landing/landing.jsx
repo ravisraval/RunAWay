@@ -8,8 +8,9 @@ class Landing extends React.Component{
     return (
       <div>
         <LandingHeader/>
-        <h1>Welcome to RunAWay</h1>
-        <h2>For when you just need to run away</h2>
+        <div className="landing-content">
+          <button>Make your way</button>
+        </div>
       </div>
     );
   }
