@@ -19,13 +19,10 @@ class LandingHeader extends React.Component{
             <input type="password" placeholder="Password"/>
           </li>
           <li>
-            Remember Me<input type="checkbox" />
-          </li>
-          <li>
             <button>Log In</button>
           </li>
           <li>
-            <button>Sign Up</button>
+            <Link to='/api/signup'><button>Sign Up</button></Link>
           </li>
         </ul>
       </div>

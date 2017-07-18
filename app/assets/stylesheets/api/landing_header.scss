@@ -1,3 +1,30 @@
+
+$MAIN_YELLOW: #E0ED1B;
+$LIGHT_YELLOW: #EDF849;
+$LIGHTEST_YELLOW: #F4FD72;
+$DARK_YELLOW: #B3BE08;
+$DARKEST_YELLOW: #B3BE08;
+
+$MAIN_ORANGE: #F0C61C;
+$LIGHT_ORANGE: #FBD849;
+$LIGHTEST_ORANGE: #FFE373;
+$DARK_ORANGE: #C09C08;
+$DARKEST_ORANGE: #987A00;
+
+$MAIN_GREEN: #6ED519;
+$LIGHT_GREEN: #89DF41;
+$LIGHTEST_GREEN: #A3E969;
+$DARK_GREEN: #51AB07;
+$DARKEST_GREEN: #3D8700;
+
+$MAIN_PURPLE: #7B189F;
+$LIGHT_PURPLE: #8935A6;
+$LIGHTEST_PURPLE: #A259BD;
+$DARK_PURPLE: #610A7F;
+$DARKEST_PURPLE: #4B0365;
+
+
+
 .landing-header {
   position: fixed;
   top: 0;
@@ -6,8 +33,13 @@
   display: flex;
   justify-content: center;
   height: 15%;
-
+  background: $MAIN_ORANGE;
   border-bottom: 3px solid gray;
+
+  input {
+    border: transparent;
+    border-radius: 10px;
+  }
 
   ul {
     margin-left: 25%;
@@ -25,11 +57,11 @@
       cursor: pointer;
     }
     li:first-child {
-      border: 2px solid black;
       position: absolute;
-      left:0;
+      left:5%;
       cursor: none;
-      font-size: 18px;
+      font-size: 25px;
+      color: $DARK_PURPLE;
 
     }
   }
@@ -39,8 +71,13 @@
     height: 40px;
     width: 150px;
     border-radius: 20px;
+    font-size: 11px;
+    color: white;
+    letter-spacing: 0.15em;
+    background-color: $LIGHT_GREEN;
+
   }
-  
+
   button:focus{
     outline:none;
  }
