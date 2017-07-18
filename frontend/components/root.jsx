@@ -1,11 +1,15 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
+import Landing from './landing'
 
 const Root = ({ store }) => (
   <Provider store={store}>
     <HashRouter>
-      <div>"I'm in root"</div>
+      <div>
+        <h1>RunAWay</h1>
+        <Route exact path="/" component={Landing} />
+      </div>
     </HashRouter>
   </Provider>
 )

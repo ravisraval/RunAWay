@@ -1,5 +1,5 @@
 {
-  "name": "Runaway",
+  "name": "RunAWay",
   "private": true,
   "dependencies": {
     "babel-core": "^6.25.0",
@@ -36,14 +36,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ravisraval/RunAway.git"
+    "url": "git+https://github.com/ravisraval/RunAWay.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ravisraval/RunAway/issues"
+    "url": "https://github.com/ravisraval/RunAWay/issues"
   },
-  "homepage": "https://github.com/ravisraval/RunAway#readme",
+  "homepage": "https://github.com/ravisraval/RunAWay#readme",
   "devDependencies": {}
 }

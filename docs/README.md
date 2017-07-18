@@ -8,7 +8,7 @@ Trello: https://trello.com/b/iaeWnAZl/runaway
 
 Minimum Viable Product:
   - Summary:
-    RunAway is a full-stack web application inspired by Strava. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
+    RunAWay is a full-stack web application inspired by Strava. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
 
   - New account creation, login, and guest/demo login
   - A production README

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery prepend: true
+  # protect_from_forgery with: :exception # TODO: deal with this
   helper_method :current_user, :require_sign_in
 
   def current_user
