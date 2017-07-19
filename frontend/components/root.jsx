@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { HashRouter, Route } from 'react-router-dom';
-import Landing from './landing/landing'
+import Landing from './landings/landing'
 import Footer from './footer';
 import SignupContainer from './signup_container';
 import WorkoutsFeedContainer from './workout/workouts_feed_container';
