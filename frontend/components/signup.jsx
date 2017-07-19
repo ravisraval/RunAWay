@@ -11,12 +11,6 @@ class SignupForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.loggedIn) {
-      this.props.history.push('/');
-    }
-  }
-
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -26,7 +20,7 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.signup({user});
+    this.props.signup({user}).then(this.props.history.push('/api/workouts'));
   }
 
 
@@ -56,7 +50,7 @@ class SignupForm extends React.Component {
               />
             </label>
             <br/>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Create Account" />
           </div>
         </form>
       </div>

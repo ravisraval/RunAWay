@@ -4,6 +4,9 @@ import { HashRouter, Route } from 'react-router-dom';
 import Landing from './Landing/landing'
 import Footer from './footer';
 import SignupContainer from './signup_container';
+import WorkoutsFeedContainer from './workouts/workouts_feed_container';
+import NavContainer from './nav_container';
+
 
 // <Route path="workouts" component={workouts} />
 const Root = ({ store }) => (
@@ -11,7 +14,9 @@ const Root = ({ store }) => (
     <HashRouter>
       <div className="container">
         <Route exact path="/" component={Landing} />
-        <Route exact path="/api/signup" component={SignupContainer}/>
+        <Route exact path="/signup" component={SignupContainer}/>
+        <Route path="/api" component={NavContainer}/>
+        <Route exact path="/api/workouts" component={WorkoutsFeedContainer}/>
         <Footer/>
       </div>
     </HashRouter>

@@ -1,8 +1,35 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 
 class LandingHeader extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: ''
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
+  }
+
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    });
+  }
+
+
+  handleDemoLogin(e) {
+    e.preventDefault();
+    this.props.login({username:"Demo User", password:"guacamole"}).then(this.props.history.push('/api/workouts'));
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const user = this.state;
+    this.props.login(user).then(this.props.history.push('/api/workouts'));
+  }
 
   render() {
 
@@ -13,16 +40,23 @@ class LandingHeader extends React.Component{
             <h3>RunAWay</h3>
           </li>
           <li>
-            <input type="text" placeholder="Username"/>
+            <form onSubmit={this.handleSubmit} className="login-form">
+                <input type="text" placeholder="Username"
+                   value={this.state.username}
+                   onChange={this.update('username')}
+                   className="signup-input"/>
+
+                 <input type="password" placeholder="Password"
+                    value={this.state.password}
+                    onChange={this.update('password')}
+                    className="signp-input"
+                  />
+                <input type="submit" value="Log In" />
+            </form>
           </li>
+          <li><button onClick={this.handleDemoLogin}>Demo Login</button></li>
           <li>
-            <input type="password" placeholder="Password"/>
-          </li>
-          <li>
-            <button>Log In</button>
-          </li>
-          <li>
-            <Link to='/api/signup'><button>Sign Up</button></Link>
+            <Link to='/signup'><button>Sign Up</button></Link>
           </li>
         </ul>
       </div>
@@ -30,4 +64,4 @@ class LandingHeader extends React.Component{
   }
 }
 
-export default LandingHeader;
+export default withRouter(LandingHeader);
