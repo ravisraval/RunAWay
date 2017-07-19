@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 
+
 class LandingHeader extends React.Component{
   constructor(props) {
     super(props);
@@ -13,12 +14,19 @@ class LandingHeader extends React.Component{
     this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
+  openModal() {
+    this.setState({ isModalOpen: true })
+  }
+
+  closeModal() {
+    this.setState({ isModalOpen: false })
+  }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
   }
-
 
   handleDemoLogin(e) {
     e.preventDefault();
@@ -31,8 +39,8 @@ class LandingHeader extends React.Component{
     this.props.login(user);
   }
 
-  componentWillReceiveProps(newprops) {
-    if (nextProps.loggedIn) {this.props.history.push('/api/workouts')};
+  componentWillReceiveProps(newProps) {
+    if (newProps.loggedIn) {this.props.history.push('/api/workouts')};
   }
 
   render() {
@@ -59,9 +67,6 @@ class LandingHeader extends React.Component{
             </form>
           </li>
           <li><button onClick={this.handleDemoLogin}>Demo Login</button></li>
-          <li>
-            <Link to='/signup'><button>Sign Up</button></Link>
-          </li>
         </ul>
       </div>
     );

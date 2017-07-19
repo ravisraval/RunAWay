@@ -1,30 +1,3 @@
-
-$MAIN_YELLOW: #E0ED1B;
-$LIGHT_YELLOW: #EDF849;
-$LIGHTEST_YELLOW: #F4FD72;
-$DARK_YELLOW: #B3BE08;
-$DARKEST_YELLOW: #B3BE08;
-
-$MAIN_ORANGE: #F0C61C;
-$LIGHT_ORANGE: #FBD849;
-$LIGHTEST_ORANGE: #FFE373;
-$DARK_ORANGE: #C09C08;
-$DARKEST_ORANGE: #987A00;
-
-$MAIN_GREEN: #6ED519;
-$LIGHT_GREEN: #89DF41;
-$LIGHTEST_GREEN: #A3E969;
-$DARK_GREEN: #51AB07;
-$DARKEST_GREEN: #3D8700;
-
-$MAIN_PURPLE: #7B189F;
-$LIGHT_PURPLE: #8935A6;
-$LIGHTEST_PURPLE: #A259BD;
-$DARK_PURPLE: #610A7F;
-$DARKEST_PURPLE: #4B0365;
-
-
-
 .landing-header {
   position: fixed;
   top: 0;
@@ -32,8 +5,8 @@ $DARKEST_PURPLE: #4B0365;
   right: 0;
   display: flex;
   justify-content: center;
-  height: 15%;
-  background: $MAIN_ORANGE;
+  height: 12%;
+  background: #333;
   border-bottom: 3px solid gray;
 
   input {
@@ -42,27 +15,31 @@ $DARKEST_PURPLE: #4B0365;
   }
 
   ul {
-    margin-left: 25%;
     display: flex;
-    border: 3px dashed orange;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
     list-style: none;
-    font-size: 12px;
+    font-size: 18px;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
     li {
-      margin: 0 9px;
+      color:white;
     }
 
     li:hover {
       cursor: pointer;
     }
     li:first-child {
-      position: absolute;
-      left:5%;
-      cursor: none;
       font-size: 25px;
-      color: $DARK_PURPLE;
+      color: white;
+      padding-right: 5%;
+      padding-left: 5%;
+      border-right: 2px solid grey;
 
+    }
+    li:last-child {
+      padding-right: 5%;
     }
   }
 
@@ -75,6 +52,7 @@ $DARKEST_PURPLE: #4B0365;
     color: white;
     letter-spacing: 0.15em;
     background-color: $LIGHT_GREEN;
+
 
   }
 

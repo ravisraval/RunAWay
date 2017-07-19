@@ -7,9 +7,17 @@ class Nav extends React.Component{
     super(props);
     console.log(this.props);
     console.log(this.state);
+    console.log("im nav");
     this.handleLogout = this.handleLogout.bind(this);
+    this.redirectUnlessLoggedIn = this.redirectUnlessLoggedIn.bind(this);
+    this.redirectUnlessLoggedIn();
   }
 
+  redirectUnlessLoggedIn() {
+    if (!this.props.state.session.currentUser){
+      this.props.history.push('/');
+    }
+  }
   handleLogout(e) {
     e.preventDefault();
     this.props.logout().then(this.props.history.push('/'));
@@ -29,7 +37,7 @@ class Nav extends React.Component{
             <Link to='/api/routes'><h4>Routes</h4></Link>
           </li>
           <li>
-            <Link to='/api/stats'>Stats</Link>
+            <Link to='/api/stats'><h4>Stats</h4></Link>
           </li>
           <li>
             <Link to='/api/profile'><button>{this.props.state.session.currentUser + "'s Profile"}</button></Link>

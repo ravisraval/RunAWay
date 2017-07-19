@@ -8,8 +8,10 @@
   height:35px;
   display: flex;
   align-items: center;
+  background: white;
 
   h4 {
+
 
   }
 
@@ -18,9 +20,11 @@
     justify-content: center;
     list-style: none;
     align-items: center;
+    background: transparent;
     padding: 0;
     li {
       margin: 0 13px;
+      color: black;
     }
 
     // li:first-child {
