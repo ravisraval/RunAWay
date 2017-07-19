@@ -1,10 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { HashRouter, Route } from 'react-router-dom';
-import Landing from './Landing/landing'
+import Landing from './landing/landing'
 import Footer from './footer';
 import SignupContainer from './signup_container';
-import WorkoutsFeedContainer from './workouts/workouts_feed_container';
+import WorkoutsFeedContainer from './workout/workouts_feed_container';
 import NavContainer from './nav_container';
 
 
