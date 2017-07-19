@@ -28,7 +28,11 @@ class LandingHeader extends React.Component{
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.login(user).then(this.props.history.push('/api/workouts'));
+    this.props.login(user);
+  }
+
+  componentWillReceiveProps(newprops) {
+    if (nextProps.loggedIn) {this.props.history.push('/api/workouts')};
   }
 
   render() {
