@@ -23,7 +23,10 @@ class Nav extends React.Component{
             <h3>RunAWay</h3>
           </li>
           <li>
-            <Link to='/api/routes'><h4>Stats</h4></Link>
+            <Link to='/api/workouts'><h4>Workouts</h4></Link>
+          </li>
+          <li>
+            <Link to='/api/routes'><h4>Routes</h4></Link>
           </li>
           <li>
             <Link to='/api/stats'>Stats</Link>

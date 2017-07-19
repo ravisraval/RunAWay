@@ -9,7 +9,7 @@ class Footer extends React.Component{
           <ul>
             <li><h4>Ravi Raval </h4></li>
             <li>
-              <a href="https://github.com/ravisraval/"><img src={"<%= asset_url('app/assets/images/GitHub-Mark.ai') %>"}/></a>
+              <a href="https://github.com/ravisraval/">GitHub</a>
             </li>
             <li>
               <a href="https://www.linkedin.com/in/ravi-raval-54a11553/">LinkedIn</a>
