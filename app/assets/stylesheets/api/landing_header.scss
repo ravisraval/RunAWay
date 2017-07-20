@@ -7,11 +7,20 @@
   justify-content: center;
   height: 12%;
   background: #333;
-  border-bottom: 3px solid gray;
+  // border-bottom: 3px solid gray;
 
   input {
     border: transparent;
-    border-radius: 10px;
+    border-radius: 5px;
+    height:30px;
+    font-size: 14px;
+    width: 150px;
+    margin-right: 12px;
+  }
+  .login-button {
+    height:40px;
+    width: 100px;
+    background: #6BBF59;
   }
 
   ul {
@@ -24,7 +33,7 @@
     text-align: center;
     width: 100%;
     li {
-      color:white;
+      color:black;
     }
 
     li:hover {
@@ -38,22 +47,27 @@
       border-right: 2px solid grey;
 
     }
+    li:nth-child(2) {
+      margin-left:30%;
+    }
     li:last-child {
       padding-right: 5%;
     }
   }
 
   button {
-    font-size: 18px;
-    height: 40px;
-    width: 150px;
-    border-radius: 20px;
-    font-size: 11px;
+    font-size: 10px;
+    font-weight: lighter;
+    width: 100px;
+    padding: 10px 0;
+    border-radius: 5px;
     color: white;
+    background: transparent;
+    border: 1px solid white;
     letter-spacing: 0.15em;
-    background-color: orange;
-
-
+  }
+  button:hover {
+    background-color: rgba(255,255,255,.5);
   }
 
   button:focus{

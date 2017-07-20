@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 
 
+
 class LandingHeader extends React.Component{
   constructor(props) {
     super(props);
@@ -14,13 +15,7 @@ class LandingHeader extends React.Component{
     this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
-  openModal() {
-    this.setState({ isModalOpen: true })
-  }
-
-  closeModal() {
-    this.setState({ isModalOpen: false })
-  }
+  
 
   update(field) {
     return e => this.setState({
@@ -51,6 +46,7 @@ class LandingHeader extends React.Component{
           <li>
             <h3>RunAWay</h3>
           </li>
+
           <li>
             <form onSubmit={this.handleSubmit} className="login-form">
                 <input type="text" placeholder="Username"
@@ -61,9 +57,9 @@ class LandingHeader extends React.Component{
                  <input type="password" placeholder="Password"
                     value={this.state.password}
                     onChange={this.update('password')}
-                    className="signp-input"
+                    className="signup-input"
                   />
-                <input type="submit" value="Log In" />
+                <button className="login-button" type="submit">Log In</button>
             </form>
           </li>
           <li><button onClick={this.handleDemoLogin}>Demo Login</button></li>
