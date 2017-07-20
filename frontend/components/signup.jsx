@@ -52,11 +52,9 @@ class SignupForm extends React.Component {
     return (
     <div className="signup-form-container">
       <form onSubmit={this.handleSubmit} className="signup-form-box">
-        <label className="login-errors">{ this.renderErrors() }</label>
         <h1>Welcome to RunAWay!</h1>
         <h2>Sign Up</h2>
         <div className="signup-form">
-          <br/>
           <label>Username:
             <input type="text"
               value={this.state.username}
@@ -64,7 +62,6 @@ class SignupForm extends React.Component {
               className="signup-input"
             />
           </label>
-          <br/>
           <label>Password:
             <input type="password"
               value={this.state.password}
@@ -72,7 +69,7 @@ class SignupForm extends React.Component {
               className="singup-input"
             />
           </label>
-          <br/>
+          <label className="login-errors">{ this.renderErrors() }</label>
           <input type="submit" value="Create Account" />
         </div>
       </form>

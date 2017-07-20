@@ -47,18 +47,27 @@ class LandingHeader extends React.Component{
             <h3>RunAWay</h3>
           </li>
           <li>
+            <ul className="login-form-list">
             <form onSubmit={this.handleSubmit} className="login-form">
+                <li>
+
                 <input type="text" placeholder="Username"
                    value={this.state.username}
                    onChange={this.update('username')}
                    className="signup-input"/>
+                 </li>
+                 <li>
                  <input type="password" placeholder="Password"
                     value={this.state.password}
                     onChange={this.update('password')}
                     className="signup-input"
                   />
+                </li>
+                <li>
                 <button className="login-button" type="submit">Log In</button>
+                </li>
             </form>
+            </ul>
           </li>
           <li><button onClick={this.handleDemoLogin}>Demo Login</button></li>
         </ul>

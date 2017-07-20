@@ -1,4 +1,9 @@
 // @import "bourbon";
+
+.landing-content-wrapper {
+  height: 100%;
+}
+
 .landing-content {
   background-repeat: no-repeat;
   background-position: top left;
@@ -9,11 +14,12 @@
 }
 
 .wrap{
-  height:100vh;
+  height: auto;
   position: relative;
-  width: 0px;
-  height: 0px;
-  margin: 20% 45%;
+  // width: 0px;
+  // height: 0px;
+  padding-left: 500px;
+  padding-top: 250px;
   &:last-child {
     margin-bottom: 0;
   }

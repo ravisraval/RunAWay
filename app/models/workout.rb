@@ -3,15 +3,14 @@ class Workout < ApplicationRecord
   validates :distance, :duration_seconds,
                         numericality: { greater_than: 0,
                                         allow_nil: true  }
-
   belongs_to :user
   belongs_to :route
 
-  def duration(duration_seconds)
+  def duration
     hsep = ""
     msep = ""
     ssep = ""
-    sec = duration_seconds
+    sec = self.duration_seconds
     hours = sec / 3600
     sec -= hours * 3600
     minutes = sec / 60

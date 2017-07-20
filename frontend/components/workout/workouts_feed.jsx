@@ -6,9 +6,10 @@ class WorkoutsFeed extends React.Component {
   render() {
     return (
       <div className="workouts-feed">
+        <h1>hi david</h1>
 
         <Link to='/home/workouts/new'><button>New Workout</button></Link>
-        
+
       </div>
     );
   }

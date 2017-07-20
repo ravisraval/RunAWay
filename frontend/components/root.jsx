@@ -18,10 +18,8 @@ const Root = ({ store }) => (
       <div className="container">
         <Route exact path="/" component={Landing} />
         <AuthRoute exact path="/signup" component={SignupContainer}/>
-        <div className='home'>
           <Route path="/home" component={NavContainer}/>
           <Route exact path="/home/workouts" component={WorkoutsFeedContainer}/>
-        </div>
         <Footer/>
       </div>
     </HashRouter>

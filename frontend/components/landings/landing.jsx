@@ -23,11 +23,11 @@ class Landing extends React.Component{
 
   render() {
     return (
-      <div>
+      <div className='landing-content-wrapper'>
         <div className='landing-content'>
         <div className="wrap">
-          <button className="clicker" onClick={() => this.openModal()}><h3>Make your way</h3></button>
-          <div className="circle angled"></div>
+
+          <div className="circle angled"><button className="clicker" onClick={() => this.openModal()}><h3>Make your way</h3></button></div>
         </div>
 
         <LandingHeaderContainer/>
