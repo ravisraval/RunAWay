@@ -6,6 +6,7 @@ import Footer from './footer';
 import SignupContainer from './signup_container';
 import WorkoutsFeedContainer from './workout/workouts_feed_container';
 import NavContainer from './nav_container';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 
 // <Route path="workouts" component={workouts} />
@@ -14,7 +15,7 @@ const Root = ({ store }) => (
     <HashRouter>
       <div className="container">
         <Route exact path="/" component={Landing} />
-        <Route exact path="/signup" component={SignupContainer}/>
+        <AuthRoute exact path="/signup" component={SignupContainer}/>
         <Route path="/api" component={NavContainer}/>
         <Route exact path="/api/workouts" component={WorkoutsFeedContainer}/>
         <Footer/>

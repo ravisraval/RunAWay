@@ -25,7 +25,12 @@ class Landing extends React.Component{
       <div>
         <LandingHeaderContainer/>
         <div className='landing-content'>
-          <button onClick={() => this.openModal()}>Make your way</button>
+
+          <div className="wrap">
+            <button className="clicker" onClick={() => this.openModal()}><h3>Make your way</h3></button>
+            <div className="circle angled"></div>
+          </div>
+
           <Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
             <SignupFormContainer/>
           </Modal>

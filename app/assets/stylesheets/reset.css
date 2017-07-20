@@ -18,3 +18,7 @@ ol, ul {
 img {
   width: 100%
 }
+
+div, body, main, html {
+  height:100%;
+}

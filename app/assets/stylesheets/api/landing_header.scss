@@ -17,7 +17,7 @@
   ul {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
     list-style: none;
     font-size: 18px;
     justify-content: space-between;
@@ -51,7 +51,7 @@
     font-size: 11px;
     color: white;
     letter-spacing: 0.15em;
-    background-color: $LIGHT_GREEN;
+    background-color: orange;
 
 
   }

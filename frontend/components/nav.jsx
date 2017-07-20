@@ -14,7 +14,7 @@ class Nav extends React.Component{
   }
 
   redirectUnlessLoggedIn() {
-    if (!this.props.state.session.currentUser){
+    if (!this.props.username){
       this.props.history.push('/');
     }
   }
@@ -40,7 +40,7 @@ class Nav extends React.Component{
             <Link to='/api/stats'><h4>Stats</h4></Link>
           </li>
           <li>
-            <Link to='/api/profile'><button>{this.props.state.session.currentUser + "'s Profile"}</button></Link>
+            <Link to='/api/profile'><button>{this.props.username + "'s Profile"}</button></Link>
           </li>
           <li>
             <button onClick={this.handleLogout}>Logout</button>
