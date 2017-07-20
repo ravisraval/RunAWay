@@ -17,7 +17,7 @@ title       | string    | not null
 notes       | string    |
 distance    | string    |
 elevation   | string    |
-type        | string    |
+biked       | boolean   |
 date        | string    |
 duration    | string    |
 

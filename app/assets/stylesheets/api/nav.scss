@@ -8,12 +8,6 @@
   align-items: center;
   height: 12%;
   background: #333;
-  border-bottom: 3px solid gray;
-
-  input {
-    border: transparent;
-    border-radius: 10px;
-  }
 
   ul {
     display: flex;
@@ -36,48 +30,44 @@
     li {
       // margin: 0 9px;
       color:white;
+      // transition: .9s;
     }
 
     li:hover {
       cursor: pointer;
-      background-color: #111;
-    }
-    li:first-child {
-      font-size: 25px;
-      color: white;
-      padding-right: 5%;
-      padding-left: 5%;
-      border-right: 2px solid grey;
 
     }
     li:first-child {
-      cursor: pointer;
       font-size: 25px;
       color: white;
       padding-right: 5%;
-      padding-left: 5%;
+      margin-left: 5%;
       border-right: 2px solid grey;
+      cursor: pointer;
 
     }
 
     li:last-child {
-      padding-right: 5%;
+      margin-right: 5%;
     }
   }
 
   button {
-    font-size: 18px;
-    height: 40px;
-    width: 150px;
-    border-radius: 20px;
-    font-size: 11px;
+    font-size: 10px;
+    font-weight: lighter;
+    width: 100px;
+    padding: 10px 0;
+    border-radius: 5px;
     color: white;
+    background: transparent;
+    border: 1px solid white;
     letter-spacing: 0.15em;
-    background-color: orange;
+    outline: none;
 
   }
 
-  button:focus{
+  button:active{
     outline:none;
+    transform: translate(0, 1px);
  }
 }

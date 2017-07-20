@@ -21,6 +21,7 @@
     height:40px;
     width: 100px;
     background: #6BBF59;
+    transition: .6s;
   }
 
   ul {
@@ -45,6 +46,7 @@
       padding-right: 5%;
       padding-left: 5%;
       border-right: 2px solid grey;
+      cursor: default;
 
     }
     li:nth-child(2) {
@@ -64,13 +66,16 @@
     color: white;
     background: transparent;
     border: 1px solid white;
+    outline: none;
     letter-spacing: 0.15em;
+    transition: .6s;
   }
   button:hover {
     background-color: rgba(255,255,255,.5);
   }
 
-  button:focus{
+  button:active{
     outline:none;
+    transform: translate(0, 1px);
  }
 }

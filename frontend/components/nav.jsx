@@ -37,7 +37,7 @@ class Nav extends React.Component{
             <Link to='/home/stats'><h4>Stats</h4></Link>
           </li>
           <li>
-            <Link to='/api/profile'><button>{this.props.username + "'s Profile"}</button></Link>
+            <Link to='/home/profile'><button>{this.props.username + "'s Profile"}</button></Link>
           </li>
           <li>
             <button onClick={this.handleLogout}>Logout</button>
