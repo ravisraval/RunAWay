@@ -33,7 +33,7 @@ class SignupForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.loggedIn) {this.props.history.push('/api/workouts')};
+    if (newProps.loggedIn) {this.props.history.push('/home/workouts')};
   }
 
   renderErrors(){

@@ -15,7 +15,7 @@ class LandingHeader extends React.Component{
     this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
-  
+
 
   update(field) {
     return e => this.setState({
@@ -25,7 +25,7 @@ class LandingHeader extends React.Component{
 
   handleDemoLogin(e) {
     e.preventDefault();
-    this.props.login({username:"Demo User", password:"guacamole"}).then(this.props.history.push('/api/workouts'));
+    this.props.login({username:"Demo User", password:"guacamole"}).then(this.props.history.push('/home/workouts'));
   }
 
   handleSubmit(e) {
@@ -35,7 +35,7 @@ class LandingHeader extends React.Component{
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.loggedIn) {this.props.history.push('/api/workouts')};
+    if (newProps.loggedIn) {this.props.history.push('/home/workouts')};
   }
 
   render() {

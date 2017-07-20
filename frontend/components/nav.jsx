@@ -5,9 +5,6 @@ import { Link } from 'react-router-dom';
 class Nav extends React.Component{
   constructor(props) {
     super(props);
-    console.log(this.props);
-    console.log(this.state);
-    console.log("im nav");
     this.handleLogout = this.handleLogout.bind(this);
     this.redirectUnlessLoggedIn = this.redirectUnlessLoggedIn.bind(this);
     this.redirectUnlessLoggedIn();
@@ -31,13 +28,13 @@ class Nav extends React.Component{
             <h3>RunAWay</h3>
           </li>
           <li>
-            <Link to='/api/workouts'><h4>Workouts</h4></Link>
+            <Link to='/home/workouts'><h4>Workouts</h4></Link>
           </li>
           <li>
-            <Link to='/api/routes'><h4>Routes</h4></Link>
+            <Link to='/home/routes'><h4>Routes</h4></Link>
           </li>
           <li>
-            <Link to='/api/stats'><h4>Stats</h4></Link>
+            <Link to='/home/stats'><h4>Stats</h4></Link>
           </li>
           <li>
             <Link to='/api/profile'><button>{this.props.username + "'s Profile"}</button></Link>
