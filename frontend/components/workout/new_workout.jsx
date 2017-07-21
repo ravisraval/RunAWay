@@ -22,7 +22,7 @@ class NewWorkout extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createWorkout(this.state)
-      .then(data => this.props.history.push(`/workout/${data.workout.id}`));
+      .then(data => this.props.history.push(`/home/workouts/${data.workout.id}`));
   }
 
   update(property) {

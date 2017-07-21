@@ -11,7 +11,7 @@ const WorkoutReducer = (state = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_WORKOUTS:
-      return action.workout;
+      return action.workouts;
     case RECEIVE_WORKOUT:
       const newWorkout = {[action.workout.id]: action.workout};
       return merge({}, state, newWorkout);

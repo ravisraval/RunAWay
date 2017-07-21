@@ -15,7 +15,6 @@ export const receiveWorkout = workout => ({
   workout
 });
 
-
 export const fetchWorkouts = filters => dispatch => (
   APIUtil.fetchWorkouts(filters).then(workouts => (
     dispatch(receiveWorkouts(workouts))

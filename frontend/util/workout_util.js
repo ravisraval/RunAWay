@@ -1,17 +1,17 @@
-export const fetchWorkouts = function(data, success, error) {
+export const fetchWorkouts = (data, success, error) => (
   $.ajax({
     method: 'GET',
     url: '/api/workouts',
     data
   })
-};
+);
 
-export const fetchWorkout = function(id, success, error) {
+export const fetchWorkout = (id, success, error) => (
   $.ajax({
     method: 'GET',
     url: `/api/workouts/${id}`
   })
-};
+);
 
 export const createWorkout = workout => (
   $.ajax({

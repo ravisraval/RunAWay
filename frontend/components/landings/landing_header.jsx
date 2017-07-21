@@ -13,9 +13,15 @@ class LandingHeader extends React.Component{
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemoLogin = this.handleDemoLogin.bind(this);
+    // this.redirectIfLoggedIn.bind(this)();
   }
 
 
+  redirectIfLoggedIn(){
+    if(this.props.loggedIn){
+      this.props.history.push('/home/workouts')
+    }
+  }
 
   update(field) {
     return e => this.setState({
@@ -34,9 +40,21 @@ class LandingHeader extends React.Component{
     this.props.login(user);
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.loggedIn) {this.props.history.push('/home/workouts')};
-  }
+  // componentWillReceiveProps(newProps) {
+  //   if (newProps.loggedIn) {this.props.history.push('/home/workouts')};
+  // }
+
+  // renderErrors(){
+  //   return(
+  //     <ul>
+  //       {this.props.errors.map( (error, i) => (
+  //         <li key={`error-${i}`}>
+  //           {error}
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
 
   render() {
 
@@ -65,6 +83,9 @@ class LandingHeader extends React.Component{
                 </li>
                 <li>
                 <button className="login-button" type="submit">Log In</button>
+                </li>
+                <li>
+
                 </li>
             </form>
             </ul>

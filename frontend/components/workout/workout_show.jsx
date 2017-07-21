@@ -20,4 +20,4 @@ const WorkoutShow = ({ workout }) => {
 };
 // };
 
-export default BenchShow;
+export default WorkoutShow;
