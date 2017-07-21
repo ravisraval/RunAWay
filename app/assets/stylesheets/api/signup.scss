@@ -11,18 +11,25 @@
   padding: 30px;
   background:transparentize(white, .25);
   text-align:center;
+  
   h1 {
     font-size: 20px;
-
   }
   h2 {
     font-size: 18px;
   }
 
-  button {
-    
-  }
 
+}
+.signup-submit-button {
+  background: transparent;
+  margin: 15px;
+  transition: .25s;
+  border: 3px solid #6BBF59;
+}
+.signup-submit-button:hover {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
 
 }
 

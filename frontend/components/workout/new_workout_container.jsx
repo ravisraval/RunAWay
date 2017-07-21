@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import NewWorkout from './new_workout';
-// import { createPokemon } from '../../actions/pokemon_actions';
+import { createWorkout } from '../../actions/workout_actions';
 
-const mapStateToProps = ({ errors }) => ({
-  errors
+const mapStateToProps = state => ({
+  currentUser: state.session.currentUser,
+  errors: state.errors
 });
 
 const mapDispatchToProps = dispatch => ({

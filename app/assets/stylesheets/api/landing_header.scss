@@ -23,7 +23,7 @@
     align-items: center;
     list-style: none;
     font-size: 18px;
-    justify-content: space-between;
+    justify-content: space-around;
     text-align: center;
     width: 100%;
     li {
@@ -33,7 +33,7 @@
     li:hover {
       cursor: pointer;
     }
-    li:first-child {
+    li.title {
       font-size: 25px;
       color: white;
       padding-right: 5%;
@@ -42,19 +42,13 @@
       cursor: default;
 
     }
-    li:nth-child(2) {
-      margin-left:30%;
-    }
-    li:last-child {
-      padding-right: 5%;
-    }
   }
 
   button {
     font-size: 10px;
     font-weight: lighter;
     width: 100px;
-    padding: 10px 0;
+    padding: 10px;
     border-radius: 5px;
     color: white;
     background: transparent;
@@ -62,6 +56,7 @@
     outline: none;
     letter-spacing: 0.15em;
     transition: .6s;
+    margin-right: 5%;
   }
   button:hover {
     background-color: rgba(255,255,255,.5);
@@ -74,10 +69,8 @@
 }
 
 .login-form-list {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-right:5%;
+
+
   input {
     border: transparent;
     border-radius: 5px;

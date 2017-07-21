@@ -70,7 +70,7 @@ class SignupForm extends React.Component {
             />
           </label>
           <label className="login-errors">{ this.renderErrors() }</label>
-          <input type="submit" value="Create Account" />
+          <input className="signup-submit-button" type="submit" value="Create Account" />
         </div>
       </form>
     </div>

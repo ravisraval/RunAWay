@@ -43,7 +43,7 @@ class LandingHeader extends React.Component{
     return (
       <div className="landing-header">
         <ul>
-          <li>
+          <li className="title">
             <h3>RunAWay</h3>
           </li>
           <li>

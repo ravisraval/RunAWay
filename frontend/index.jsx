@@ -5,6 +5,9 @@ import Root from './components/root';
 import configureStore from './store/store';
 // import { }
 
+//test imports
+import * as util from './util/workout_util'
+
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   if (window.currentUser) {
@@ -17,4 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
   window.store = store;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store}/>, root);
+
+    //tests
+
+    window.dispatch = store.dispatch
+    window.createWorkout = util.createWorkout
+
 });
