@@ -14,7 +14,7 @@ class Api::WorkoutsController < ApplicationController
 
   def index
     @workouts = Workout.where(user_id: current_user.id)
-    render "/api/workouts/index"
+    render "api/workouts/index"
   end
 
   def show
@@ -25,7 +25,7 @@ class Api::WorkoutsController < ApplicationController
   def destroy
     @workout = Workout.find(params[:id])
     if @workout.destroy
-      render "/api/workouts/index"
+      render json: @todo
     else
       render json: @workout.errors.full_messages, status: 422
     end

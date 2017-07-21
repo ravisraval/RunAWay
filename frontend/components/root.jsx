@@ -15,7 +15,7 @@ const redirectIfLoggedIn = (nextState, replace) => {
   const currentState = this.context.store.getState();
   const currentUser = currentState.session.currentUser;
   if (currentUser) {
-    replace('/');
+    replace('/home/workouts');
   }
 }
 const Root = ({ store }) => (
@@ -26,8 +26,8 @@ const Root = ({ store }) => (
         <AuthRoute exact path="/signup" component={SignupContainer} onEnter={redirectIfLoggedIn}/>
         <Route path="/home" component={NavContainer}/>
         <Route exact path="/home/workouts" component={WorkoutsFeedContainer}/>
-        <Route exact path="/home/workouts/new" component={NewWorkoutContainer}/>
-        <Route path="/home/workouts/:workoutId" component={WorkoutShowContainer}/>
+        <Route exact path="/home/new_workout/" component={NewWorkoutContainer}/>
+        <Route exact path="/home/workouts/:workoutId" component={WorkoutShowContainer}/>
         <Footer/>
       </div>
     </HashRouter>

@@ -1,20 +1,36 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import WorkoutFeedItemContainer from './workout_feed_item_container';
+
 
 class WorkoutsFeed extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
 
   componentDidMount() {
     this.props.fetchWorkouts();
   }
 
   render() {
+    console.log('workout feed');
+    const {workouts} = this.props;
+    if (!workouts) {return null};
+    const workoutItems = this.props.workouts.map(workout => (
+        <WorkoutFeedItemContainer
+          key={ workout.id }
+          workout={ workout }/>
+      )
+    );
     return (
       <div className="workouts-feed">
         <h1>hi david</h1>
+        <ul className="workout-list">
+          {workoutItems}
+        </ul>
 
-
-        <Link to='/home/workouts/new'><button>New Workout</button></Link>
-
+        <Link to='/home/new_workout'><button className="new-workout-btn">New Workout</button></Link>
       </div>
     );
   }

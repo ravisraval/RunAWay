@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 
 import WorkoutsFeed from './workouts_feed';
 import { fetchWorkouts } from '../../actions/workout_actions';
-import { selectUserWorkouts } from '../../reducers/selectors';
+import { allWorkouts } from '../../reducers/selectors';
 
 const mapStateToProps = state => ({
-  workouts: selectUserWorkouts(state)
+  workouts: allWorkouts(state)
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -13,6 +13,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(WorkoutsFeed);

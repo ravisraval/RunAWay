@@ -17,11 +17,11 @@ class LandingHeader extends React.Component{
   }
 
 
-  redirectIfLoggedIn(){
-    if(this.props.loggedIn){
-      this.props.history.push('/home/workouts')
-    }
-  }
+  // redirectIfLoggedIn(){
+  //   if(this.props.loggedIn){
+  //     this.props.history.push('/home/workouts')
+  //   }
+  // }
 
   update(field) {
     return e => this.setState({
@@ -31,7 +31,7 @@ class LandingHeader extends React.Component{
 
   handleDemoLogin(e) {
     e.preventDefault();
-    this.props.login({username:"Demo User", password:"guacamole"}).then(this.props.history.push('/home/workouts'));
+    this.props.login({username:"Demo User", password:"guacamole"})
   }
 
   handleSubmit(e) {
@@ -40,9 +40,9 @@ class LandingHeader extends React.Component{
     this.props.login(user);
   }
 
-  // componentWillReceiveProps(newProps) {
-  //   if (newProps.loggedIn) {this.props.history.push('/home/workouts')};
-  // }
+  componentWillReceiveProps(newProps) {
+    if (newProps.loggedIn) {this.props.history.push('/home/workouts')};
+  }
 
   // renderErrors(){
   //   return(

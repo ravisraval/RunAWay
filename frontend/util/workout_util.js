@@ -21,11 +21,11 @@ export const createWorkout = workout => (
   })
 );
 
-export const deleteWorkout = function(id, success, error) {
+export const deleteWorkout = (workout, success, error) => (
   $.ajax({
     method: 'DELETE',
-    url: `/api/workouts/${id}`,
+    url: `/api/workouts/${workout.id}`,
     success,
     error
-  });
-};
+  })
+);

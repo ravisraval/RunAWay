@@ -70,14 +70,6 @@ class NewWorkout extends React.Component {
               onChange={this.update('title')}
             />
           </label>
-          <label><h3>Notes</h3>
-            <input
-              type="textarea"
-              value={this.state.notes}
-              placeholder="Notes"
-              onChange={this.update('notes')}
-            />
-          </label>
           <label>
             <h3>Distance (miles)</h3>
             <input
@@ -121,6 +113,13 @@ class NewWorkout extends React.Component {
               checked={biked === false}
               onChange={this.handleRadio}
             />Run
+          </label>
+          <label><h3>Notes</h3>
+            <input
+              value={this.state.notes}
+              placeholder="Notes"
+              onChange={this.update('notes')}
+            />
           </label>
           <button type="submit">Create Workout</button>
         </form>

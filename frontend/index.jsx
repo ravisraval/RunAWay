@@ -7,6 +7,7 @@ import configureStore from './store/store';
 
 //test imports
 import * as util from './util/workout_util'
+import * as action from './actions/workout_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
   window.store = store;
+  window.fetchWorkouts = action.fetchWorkouts;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store}/>, root);
 
