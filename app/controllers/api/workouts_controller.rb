@@ -25,7 +25,7 @@ class Api::WorkoutsController < ApplicationController
   def destroy
     @workout = Workout.find(params[:id])
     if @workout.destroy
-      render json: @todo
+      render json: {}
     else
       render json: @workout.errors.full_messages, status: 422
     end
