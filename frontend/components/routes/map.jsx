@@ -2,11 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-
+//make start marker green flag, end checkered
 class Map extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      biked: null
+    };
     this.addBurritoPlace = this.addBurritoPlace.bind(this);
+    this.handleRadio = this.handleRadio.bind(this);
   }
 
   componentDidMount() {/*
@@ -18,7 +22,11 @@ class Map extends React.Component {
     const map = ReactDOM.findDOMNode(this.refs.map);
     const options = {
       center: this.props.center,
-      zoom: 13
+      zoom: 13,
+      mapTypeControl: true,
+      mapTypeControlOptions: {
+          style: google.maps.MapTypeControlStyle.DEFAULT
+          }
     };
     // this line actually creates the map and renders it into the DOM
     this.map = new google.maps.Map(map, options);
@@ -26,6 +34,10 @@ class Map extends React.Component {
     this.listenForMove();
     this.props.burritoPlaces.forEach(this.addBurritoPlace);
 
+  }
+
+  update(property) {
+    return e => this.setState({ [property]: e.target.value });
   }
 
   addBurritoPlace(burritoPlace) {
@@ -51,6 +63,7 @@ class Map extends React.Component {
     });
   }
 
+
   listenForMove() {
    /*
     * we listen for the map to emit an 'idle' event, it does this when
@@ -58,7 +71,7 @@ class Map extends React.Component {
     */
    google.maps.event.addListener(this.map, 'idle', () => {
      const bounds = this.map.getBounds();
-     alert('map has moved, check console to see updated bounds');
+
      console.log('center',
         bounds.getCenter().lat(),
         bounds.getCenter().lng());
@@ -68,9 +81,16 @@ class Map extends React.Component {
       console.log("south west",
         bounds.getSouthWest().lat(),
         bounds.getSouthWest().lng());
+      console.log("zoom", this.map.getZoom());
     });
   }
+
+  handleRadio(event) {
+   const biked = event.currentTarget.value === 'true' ? true: false;
+   this.setState({ biked });
+ }
     render() {
+      const { biked } = this.state;
     /*
      * the div that will become the map is just an empty div
      * we give it a 'ref' so we can easily get a pointer to the
@@ -81,6 +101,26 @@ class Map extends React.Component {
     return (
       <div>
         <span>MAP DEMO</span>
+        <div className="route-type-btns">
+          <label>
+            <input
+              type="radio"
+              name="biked"
+              value="true"
+              checked={biked === true}
+              onChange={this.handleRadio}
+            />Bike
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="biked"
+              value="false"
+              checked={biked === false}
+              onChange={this.handleRadio}
+            />Run
+          </label>
+        </div>
         <div id='map' ref='map'/>
         <p>
           Hey! Here are a few good burrito places in SF. Click on them

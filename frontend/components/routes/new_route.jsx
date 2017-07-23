@@ -1,5 +1,5 @@
 import React from 'react';
-import dap from './map';
+import Map from './map';
 
 class NewRoute extends React.Component {
   constructor() {
@@ -13,11 +13,12 @@ class NewRoute extends React.Component {
     const burritos = [
       { lat: 37.7508199, lng: -122.4181513, name: "La Taqueria" }
     ];
+
     return(
       <div className="new-route-page">
         <div className="route-builder">
           <h1>Build A Route</h1>
-            <Map center={mapCenter} burritoPlaces={burritos}/>,
+          <Map center={mapCenter} burritoPlaces={burritos}/>,
         </div>
       </div>
     );

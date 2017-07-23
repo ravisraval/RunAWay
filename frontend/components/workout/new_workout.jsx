@@ -38,6 +38,7 @@ class NewWorkout extends React.Component {
       );
     }
   }
+  
   handleRadio(event) {
    const biked = event.currentTarget.value === 'true' ? true: false;
    console.log('handle', biked);
@@ -55,7 +56,7 @@ class NewWorkout extends React.Component {
     //     return <option value={type} key={i}>{type}</option>;
     //     })}
     //   </select>
-    // <img src="/assets/pokemon-logo.svg" alt="Copyright of Nintendo Pokemon"/>
+    // <img src=MAKE THIS A GOOGLE MAP THINGY/>
     return (
       <section className="new-workout-page">
         <ul>
@@ -80,7 +81,7 @@ class NewWorkout extends React.Component {
             />
           </label>
           <label>
-            <h3>Duration (for some reason put seconds)</h3>
+            <h3>Duration (for some reason put seconds, change this to take in hours, minutes, seconds)</h3>
             <input
               type="number"
               value={this.state.duration_seconds}
