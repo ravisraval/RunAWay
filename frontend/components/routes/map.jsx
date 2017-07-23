@@ -7,9 +7,10 @@ class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      biked: null
+      biked: null,
+      waypoints: []
     };
-    this.addBurritoPlace = this.addBurritoPlace.bind(this);
+
     this.handleRadio = this.handleRadio.bind(this);
   }
 
@@ -32,7 +33,8 @@ class Map extends React.Component {
     this.map = new google.maps.Map(map, options);
 
     this.listenForMove();
-    this.props.burritoPlaces.forEach(this.addBurritoPlace);
+    // this.listenForClick();
+    this.props.waypoints.forEach(this.addWaypoint);
 
   }
 
@@ -40,28 +42,18 @@ class Map extends React.Component {
     return e => this.setState({ [property]: e.target.value });
   }
 
-  addBurritoPlace(burritoPlace) {
-    /*
-    * we make an instance of the google maps LatLng class, args are
-    * (lat, lng)
-    */
-   const pos = new google.maps.LatLng(burritoPlace.lat, burritoPlace.lng);
-
-   /*
-     * then we use our new instance of LatLng to make a marker
-     * set map to this.map, this is what adds it to the map
-     * when we want to remove this marker, we need to set its
-     * map property to null using myMarker.setMap(null)
-     */
-    const marker = new google.maps.Marker({
-      position: pos,
-      map: this.map
-    });
-    // when the marker is clicked on, alert the name
-    marker.addListener('click', () => {
-      alert(`clicked on: ${burritoPlace.name}`);
-    });
-  }
+  // listenForClick() {
+  //
+  //   marker.addListener('click', () => {
+  //     // alert(`clicked on: ${waypoint.name}`);
+  //     markers.push(new google.maps.Marker({
+  //       map: this.map,
+  //       icon: icon,
+  //       title: place.name,
+  //       position: place.geometry.locatio
+  //     }));
+  //   });
+  // }
 
 
   listenForMove() {
@@ -89,6 +81,20 @@ class Map extends React.Component {
    const biked = event.currentTarget.value === 'true' ? true: false;
    this.setState({ biked });
  }
+//
+//  map.addListener('click', function(e) {
+//   placeMarkerAndPanTo(e.latLng, map);
+// });
+// }
+//
+// function placeMarkerAndPanTo(latLng, map) {
+// var marker = new google.maps.Marker({
+//   position: latLng,
+//   map: map
+// });
+// map.panTo(latLng);
+// }
+
     render() {
       const { biked } = this.state;
     /*
@@ -101,6 +107,7 @@ class Map extends React.Component {
     return (
       <div>
         <span>MAP DEMO</span>
+        <input id="pac-input" className="controls" type="text" placeholder="Search Box"/>
         <div className="route-type-btns">
           <label>
             <input
@@ -123,9 +130,7 @@ class Map extends React.Component {
         </div>
         <div id='map' ref='map'/>
         <p>
-          Hey! Here are a few good burrito places in SF. Click on them
-          to find their name. Move the map and check the console to see
-          the new boundaries of the displayed map.
+          wuzzzuuuup
         </p>
       </div>
     );
