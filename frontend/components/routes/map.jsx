@@ -44,9 +44,23 @@ class Map extends React.Component {
     this.directionsService = new google.maps.DirectionsService;
     this.distanceMatrixService = new google.maps.DistanceMatrixService();
     this.directionsDisplay.setMap(this.map);
-
+    let input = document.getElementById('pac-input');
+    let searchBox = new google.maps.places.SearchBox(input);
+    this.registerListeners(searchBox, this.map);
     // this.listenForMove();
     this.listenforClick();
+  }
+
+  registerListeners(searchBox, map){
+    let self = this;
+
+    searchBox.addListener('places_changed', function() {
+      var place = searchBox.getPlaces()[0];
+      console.log(place);
+      const latt = place.geometry.location.lat();
+      const long = place.geometry.location.lng();
+      map.panTo(new google.maps.LatLng(latt, long));
+    });
   }
 
   handleToggleTravel(e) {
@@ -121,12 +135,8 @@ class Map extends React.Component {
         if (status == 'OK') {
           const info = response.rows[0].elements[0];
           dist = dist + info.distance.value;
-          console.log(dist);
           dur = dur + info.duration.value;
           if ( i === waypoints.length - 2) {
-            console.log("this happened");
-            console.log(dist);
-            console.log(dur);
             this.setState({
               distance: dist,
               duration: dur
@@ -142,9 +152,9 @@ class Map extends React.Component {
     let msep = "";
     let ssep = "";
     let sec = this.state.duration;
-    let hours = sec / 3600;
+    let hours = Math.floor(sec / 3600);
     sec -= hours * 3600;
-    let minutes = sec / 60;
+    let minutes = Math.floor(sec / 60);
     sec -= minutes * 60;
     if (hours < 10) {hsep = "0" };
     if (minutes < 10) {msep = "0" };
@@ -168,7 +178,7 @@ class Map extends React.Component {
         <input id="pac-input" className="controls" type="text" placeholder="Search Box"/>
         <ul className="route-info-list">
           <li>Distance: {Math.round(100 * distance / 1609.34) / 100} miles</li>
-          <li>Duration: {this.displayDuration}</li>
+          <li>Duration: {this.displayDuration()}</li>
           <li>Elevation change:</li>
         </ul>
         <div className="route-type-btns">
