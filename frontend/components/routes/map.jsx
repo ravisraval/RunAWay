@@ -8,12 +8,16 @@ class Map extends React.Component {
     super(props);
     this.state = {
       travelMode: "BICYCLING",
-      markers: this.props.markers,
-      waypoints: []
+      markers: [],
+      waypoints: [],
+      distance: 0,
+      duration: 0,
+      elevation: ""
     };
     this.handleToggleTravel = this.handleToggleTravel.bind(this);
     this.listenforClick = this.listenforClick.bind(this);
     this.calcAndDisplayRoute = this.calcAndDisplayRoute.bind(this);
+    this.displayDuration = this.displayDuration.bind(this);
   }
 
   componentDidMount() {/*
@@ -38,6 +42,7 @@ class Map extends React.Component {
       map: this.map
     });
     this.directionsService = new google.maps.DirectionsService;
+    this.distanceMatrixService = new google.maps.DistanceMatrixService();
     this.directionsDisplay.setMap(this.map);
 
     // this.listenForMove();
@@ -45,9 +50,9 @@ class Map extends React.Component {
   }
 
   handleToggleTravel(e) {
-    this.update('travelMode');
+    this.update('travelMode')(e);
     if (this.state.markers.length > 1) {
-      this.calcAndDisplayRoute;
+      this.calcAndDisplayRoute();
     };
   }
 
@@ -84,54 +89,93 @@ class Map extends React.Component {
   calcAndDisplayRoute() {
     const {markers} = this.state;
     const {waypoints} = this.state;
+
     this.directionsService.route({
       origin: waypoints[0],
       destination: waypoints[waypoints.length - 1],
       travelMode: this.state.travelMode,
       waypoints: waypoints.slice(1,-1),
-      optimizeWaypoints: true,
-      provideRouteAlternatives: true,
-      avoidHighways: true,
-      avoidTolls: true
+      // unitSystem: google.maps.UnitSystem.IMPERIAL,
+      provideRouteAlternatives: true
     },
     (response, status) => {
       if (status == 'OK') {
         this.directionsDisplay.setDirections(response);
       }
+    });
+    this.calcAndDisplayInfo();
+  }
+
+  calcAndDisplayInfo(){
+    const {markers} = this.state;
+    const {waypoints} = this.state;
+    let dist = 0;
+    let dur = 0;
+    for (let i = 0; i < waypoints.length - 1; i++) {
+      this.distanceMatrixService.getDistanceMatrix({
+        origins: [waypoints[i]],
+        destinations: [waypoints[i + 1]],
+        travelMode: this.state.travelMode,
+      },
+      (response, status) => {
+        if (status == 'OK') {
+          const info = response.rows[0].elements[0];
+          dist = dist + info.distance.value;
+          console.log(dist);
+          dur = dur + info.duration.value;
+          if ( i === waypoints.length - 2) {
+            console.log("this happened");
+            console.log(dist);
+            console.log(dur);
+            this.setState({
+              distance: dist,
+              duration: dur
+            });
+          }
+        }
+      })
     }
-  )}
+  }
 
-  // listenForMove() {
-  //  /*
-  //   * we listen for the map to emit an 'idle' event, it does this when
-  //   * the map stops moving
-  //   */
-  //  google.maps.event.addListener(this.map, 'idle', () => {
-  //    const bounds = this.map.getBounds();
-  //   });
-  // }
+  displayDuration() {
+    let hsep = "";
+    let msep = "";
+    let ssep = "";
+    let sec = this.state.duration;
+    let hours = sec / 3600;
+    sec -= hours * 3600;
+    let minutes = sec / 60;
+    sec -= minutes * 60;
+    if (hours < 10) {hsep = "0" };
+    if (minutes < 10) {msep = "0" };
+    if (sec < 10) {ssep = "0" };
+    return `${hsep}${hours}:${msep}${minutes}:${ssep}${sec}`;
+  }
 
-    render() {
-      const { biked } = this.state;
-    /*
-     * the div that will become the map is just an empty div
-     * we give it a 'ref' so we can easily get a pointer to the
-     * actual dom node up in componentDidMount
-     * DO NOT FORGET: you must style your map div and give it width + height
-     * or else it won't be visible!
-     */
+  // Math.round(100 * duration / 60) / 100}
+
+  render() {
+    const { biked } = this.state;
+    const { distance } = this.state;
+  /*
+   * the div that will become the map is just an empty div
+   * we give it a 'ref' so we can easily get a pointer to the
+   * actual dom node up in componentDidMount
+   */
     return (
       <div>
         <span>MAP DEMO</span>
         <input id="pac-input" className="controls" type="text" placeholder="Search Box"/>
+        <ul className="route-info-list">
+          <li>Distance: {Math.round(100 * distance / 1609.34) / 100} miles</li>
+          <li>Duration: {this.displayDuration}</li>
+          <li>Elevation change:</li>
+        </ul>
         <div className="route-type-btns">
           <button value="BICYCLING" onClick={this.handleToggleTravel}>Bike</button>
           <button value="WALKING" onClick={this.handleToggleTravel}>Run</button>
         </div>
         <div id='map' ref='map'/>
-        <p>
-          wuzzzuuuup
-        </p>
       </div>
     );
   }

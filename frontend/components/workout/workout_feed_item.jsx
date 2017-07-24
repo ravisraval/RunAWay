@@ -6,7 +6,11 @@ class WorkoutFeedItem extends React.Component {
   constructor(props) {
     super(props);
     console.log(props);
+    this.handleDelete = this.handleDelete.bind(this);
 
+  }
+  handleDelete(){
+    this.props.destroyWorkout()
   }
 
   render() {
@@ -22,7 +26,7 @@ class WorkoutFeedItem extends React.Component {
         <span> { workout.elevation_change } </span>
       </Link>
 
-      <button onClick={destroyWorkout} className="delete-button">Delete</button>
+      <button onClick={this.handleDelete} className="delete-button">Delete</button>
 
 
       </li>

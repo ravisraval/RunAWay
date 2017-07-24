@@ -38,7 +38,7 @@ class NewWorkout extends React.Component {
       );
     }
   }
-  
+
   handleRadio(event) {
    const biked = event.currentTarget.value === 'true' ? true: false;
    console.log('handle', biked);
@@ -47,7 +47,6 @@ class NewWorkout extends React.Component {
 
   render() {
     const { biked } = this.state;
-    console.log(biked, true);
     // <select
     //   value={this.state.route_id}
     //   onChange={this.update('route_id')}
@@ -122,6 +121,11 @@ class NewWorkout extends React.Component {
               onChange={this.update('notes')}
             />
           </label>
+          <select>
+            <option value="" disabled="disabled" selected="selected">Saved Routes</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+          </select>
           <button type="submit">Create Workout</button>
         </form>
       </section>
