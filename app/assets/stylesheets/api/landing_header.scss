@@ -1,3 +1,7 @@
+ul.landing-header-list {
+  justify-content: space-between !important;
+}
+
 .landing-header {
   position: fixed;
   top: 0;
@@ -13,13 +17,13 @@
   .login-button {
     height:40px;
     width: 100px;
-    background: #6BBF59;
+    background: transparent;
     transition: .6s;
   }
 
   ul {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     list-style: none;
     font-size: 18px;
@@ -80,4 +84,13 @@
     margin-right: 12px;
   }
 
+}
+
+.login-form {
+  display: flex;
+  align-items: center;
+}
+
+.demo-login {
+  margin-right: 5%;
 }

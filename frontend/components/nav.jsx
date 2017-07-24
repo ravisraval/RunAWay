@@ -23,8 +23,8 @@ class Nav extends React.Component{
   render() {
     return (
       <div className="nav-bar">
-        <ul>
-          <li>
+        <ul className="left-nav">
+          <li className ="logo">
             <h3>RunAWay</h3>
           </li>
           <li>
@@ -36,6 +36,8 @@ class Nav extends React.Component{
           <li>
             <Link to='/home/stats'><h4>Stats</h4></Link>
           </li>
+        </ul>
+        <ul className="right-nav">
           <li>
             <Link to='/home/profile'><button>{this.props.username + "'s Profile"}</button></Link>
           </li>

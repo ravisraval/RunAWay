@@ -9,6 +9,8 @@ html, body, div, span, h1, h2, h3, h4, a, ol, ul, li, form, label, article, asid
 
 body {
   line-height: 1.5;
+  font-family: system-ui;
+  font-weight: lighter;
 }
 
 ol, ul {

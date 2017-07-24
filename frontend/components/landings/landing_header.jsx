@@ -60,7 +60,7 @@ class LandingHeader extends React.Component{
 
     return (
       <div className="landing-header">
-        <ul>
+        <ul className="landing-header-list">
           <li className="title">
             <h3>RunAWay</h3>
           </li>
@@ -90,7 +90,8 @@ class LandingHeader extends React.Component{
             </form>
             </ul>
           </li>
-          <li><button onClick={this.handleDemoLogin}>Demo Login</button></li>
+          <li className="demo-login"><button
+            className="login-button" onClick={this.handleDemoLogin}>Demo Login</button></li>
         </ul>
       </div>
     );
