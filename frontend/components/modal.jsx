@@ -7,8 +7,8 @@ class Modal extends React.Component {
 
      let modalStyle = {
        position: 'absolute',
-       top: '50%',
-       left: '50%',
+       top: '30%',
+       left: '43%',
        transform: 'translate(-50%, -50%)',
        zIndex: '9999',
        background: '#fff'
@@ -35,7 +35,7 @@ class Modal extends React.Component {
        top: '0px',
        left: '0px',
        zIndex: '9998',
-       background: 'rgba(0, 0, 0, 0.3)'
+       background: 'rgba(0, 0, 0, 0.5)'
      }
 
      if (this.props.backdropStyle) {

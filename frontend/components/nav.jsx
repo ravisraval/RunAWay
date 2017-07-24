@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 class Nav extends React.Component{
@@ -28,21 +28,22 @@ class Nav extends React.Component{
             <h3>RunAWay</h3>
           </li>
           <li>
-            <Link to='/home/workouts'><h4>Workouts</h4></Link>
+            <NavLink to='/home/workouts'><h4>Workouts</h4></NavLink>
           </li>
           <li>
-            <Link to='/home/routes'><h4>Routes</h4></Link>
+            <NavLink to='/home/routes'><h4>Routes</h4></NavLink>
           </li>
           <li>
-            <Link to='/home/stats'><h4>Stats</h4></Link>
+            <NavLink to='/home/stats'><h4>Stats</h4></NavLink>
           </li>
         </ul>
         <ul className="right-nav">
           <li>
-            <Link to='/home/profile'><button>{this.props.username + "'s Profile"}</button></Link>
+            <NavLink to='/home/profile'><button
+              className="session-link">{this.props.username + "'s Profile"}</button></NavLink>
           </li>
           <li>
-            <button onClick={this.handleLogout}>Logout</button>
+            <button className="session-link" onClick={this.handleLogout}>Logout</button>
           </li>
         </ul>
       </div>

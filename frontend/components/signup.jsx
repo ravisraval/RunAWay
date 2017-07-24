@@ -66,12 +66,12 @@ class SignupForm extends React.Component {
             <input type="password"
               value={this.state.password}
               onChange={this.update('password')}
-              className="singup-input"
+              className="signup-input"
             />
           </label>
           <label className="login-errors">{ this.renderErrors() }</label>
-          <input className="signup-submit-button" type="submit" value="Create Account" />
         </div>
+          <input className="signup-submit-button" type="submit" value="Create Account" />
       </form>
     </div>
     );

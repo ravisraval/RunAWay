@@ -14,7 +14,7 @@ ul.landing-header-list {
   // border-bottom: 3px solid gray;
 
 
-  .login-button {
+  .session-link {
     height:40px;
     width: 100px;
     background: transparent;
@@ -48,28 +48,6 @@ ul.landing-header-list {
     }
   }
 
-  button {
-    font-size: 10px;
-    font-weight: lighter;
-    width: 100px;
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-    background: transparent;
-    border: 1px solid white;
-    outline: none;
-    letter-spacing: 0.15em;
-    transition: .6s;
-    margin-right: 5%;
-  }
-  button:hover {
-    background-color: rgba(255,255,255,.5);
-  }
-
-  button:active{
-    outline:none;
-    transform: translate(0, 1px);
- }
 }
 
 .login-form-list {
@@ -93,4 +71,27 @@ ul.landing-header-list {
 
 .demo-login {
   margin-right: 5%;
+}
+
+.session-link {
+  font-size: 10px;
+  font-weight: lighter;
+  width: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  background: transparent;
+  border: 1px solid white;
+  outline: none;
+  letter-spacing: 0.15em;
+  transition: .6s;
+  margin-right: 5%;
+}
+.session-link:hover {
+  background-color: rgba(255,255,255,.5);
+}
+
+.session-link:active{
+  outline:none;
+  transform: translate(0, 1px);
 }

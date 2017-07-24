@@ -82,7 +82,7 @@ class LandingHeader extends React.Component{
                   />
                 </li>
                 <li>
-                <button className="login-button" type="submit">Log In</button>
+                <button className="session-link" type="submit">Log In</button>
                 </li>
                 <li>
 
@@ -91,7 +91,7 @@ class LandingHeader extends React.Component{
             </ul>
           </li>
           <li className="demo-login"><button
-            className="login-button" onClick={this.handleDemoLogin}>Demo Login</button></li>
+            className="session-link" onClick={this.handleDemoLogin}>Demo Login</button></li>
         </ul>
       </div>
     );
