@@ -8,17 +8,15 @@ class NewRoute extends React.Component {
   }
 
   render() {
-    const mapCenter = { lat: 37.7758, lng: -122.435 };
+    const startingMapCenter = { lat: 37.7758, lng: -122.435 };
 
-    const burritos = [
-      { lat: 37.7508199, lng: -122.4181513, name: "La Taqueria" }
-    ];
+    const startingMarkers = [];
 
     return(
       <div className="new-route-page">
         <div className="route-builder">
           <h1>Build A Route</h1>
-          <Map center={mapCenter} burritoPlaces={burritos}/>,
+          <Map center={startingMapCenter} markers={startingMarkers}/>,
         </div>
       </div>
     );

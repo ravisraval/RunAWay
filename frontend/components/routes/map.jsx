@@ -7,11 +7,13 @@ class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      biked: null,
+      travelMode: "BICYCLING",
+      markers: this.props.markers,
       waypoints: []
     };
-
-    this.handleRadio = this.handleRadio.bind(this);
+    this.handleToggleTravel = this.handleToggleTravel.bind(this);
+    this.listenforClick = this.listenforClick.bind(this);
+    this.calcAndDisplayRoute = this.calcAndDisplayRoute.bind(this);
   }
 
   componentDidMount() {/*
@@ -31,69 +33,83 @@ class Map extends React.Component {
     };
     // this line actually creates the map and renders it into the DOM
     this.map = new google.maps.Map(map, options);
+    this.directionsDisplay = new google.maps.DirectionsRenderer({
+      draggable: true,
+      map: this.map
+    });
+    this.directionsService = new google.maps.DirectionsService;
+    this.directionsDisplay.setMap(this.map);
 
-    this.listenForMove();
-    // this.listenForClick();
-    this.props.waypoints.forEach(this.addWaypoint);
+    // this.listenForMove();
+    this.listenforClick();
+  }
 
+  handleToggleTravel(e) {
+    this.update('travelMode');
+    if (this.state.markers.length > 1) {
+      this.calcAndDisplayRoute;
+    };
   }
 
   update(property) {
-    return e => this.setState({ [property]: e.target.value });
+    return e => {this.setState({ [property]: e.target.value })}
   }
 
-  // listenForClick() {
-  //
-  //   marker.addListener('click', () => {
-  //     // alert(`clicked on: ${waypoint.name}`);
-  //     markers.push(new google.maps.Marker({
-  //       map: this.map,
-  //       icon: icon,
-  //       title: place.name,
-  //       position: place.geometry.locatio
-  //     }));
+  listenforClick() {
+    const {markers} = this.state;
+    const {waypoints} = this.state;
+    this.map.addListener('click', (e) => {
+      placeMarker(e.latLng, this.map);});
+
+    const placeMarker = (position, map) => {
+      console.log(this.state.travelMode);
+      let marker = new google.maps.Marker({
+          position: position,
+          map: map
+        });
+      let loc = new google.maps.LatLng(
+        position.lat(),
+        position.lng()
+      )
+      waypoints.push({location: loc });
+      markers.push(marker);
+
+      if (markers.length > 1) {
+        this.calcAndDisplayRoute();
+
+      }
+    }
+  }
+
+  calcAndDisplayRoute() {
+    const {markers} = this.state;
+    const {waypoints} = this.state;
+    this.directionsService.route({
+      origin: waypoints[0],
+      destination: waypoints[waypoints.length - 1],
+      travelMode: this.state.travelMode,
+      waypoints: waypoints.slice(1,-1),
+      optimizeWaypoints: true,
+      provideRouteAlternatives: true,
+      avoidHighways: true,
+      avoidTolls: true
+    },
+    (response, status) => {
+      if (status == 'OK') {
+        this.directionsDisplay.setDirections(response);
+      }
+    }
+  )}
+
+  // listenForMove() {
+  //  /*
+  //   * we listen for the map to emit an 'idle' event, it does this when
+  //   * the map stops moving
+  //   */
+  //  google.maps.event.addListener(this.map, 'idle', () => {
+  //    const bounds = this.map.getBounds();
   //   });
   // }
-
-
-  listenForMove() {
-   /*
-    * we listen for the map to emit an 'idle' event, it does this when
-    * the map stops moving
-    */
-   google.maps.event.addListener(this.map, 'idle', () => {
-     const bounds = this.map.getBounds();
-
-     console.log('center',
-        bounds.getCenter().lat(),
-        bounds.getCenter().lng());
-      console.log("north east",
-        bounds.getNorthEast().lat(),
-        bounds.getNorthEast().lng());
-      console.log("south west",
-        bounds.getSouthWest().lat(),
-        bounds.getSouthWest().lng());
-      console.log("zoom", this.map.getZoom());
-    });
-  }
-
-  handleRadio(event) {
-   const biked = event.currentTarget.value === 'true' ? true: false;
-   this.setState({ biked });
- }
-//
-//  map.addListener('click', function(e) {
-//   placeMarkerAndPanTo(e.latLng, map);
-// });
-// }
-//
-// function placeMarkerAndPanTo(latLng, map) {
-// var marker = new google.maps.Marker({
-//   position: latLng,
-//   map: map
-// });
-// map.panTo(latLng);
-// }
 
     render() {
       const { biked } = this.state;
@@ -109,24 +125,8 @@ class Map extends React.Component {
         <span>MAP DEMO</span>
         <input id="pac-input" className="controls" type="text" placeholder="Search Box"/>
         <div className="route-type-btns">
-          <label>
-            <input
-              type="radio"
-              name="biked"
-              value="true"
-              checked={biked === true}
-              onChange={this.handleRadio}
-            />Bike
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="biked"
-              value="false"
-              checked={biked === false}
-              onChange={this.handleRadio}
-            />Run
-          </label>
+          <button value="BICYCLING" onClick={this.handleToggleTravel}>Bike</button>
+          <button value="WALKING" onClick={this.handleToggleTravel}>Run</button>
         </div>
         <div id='map' ref='map'/>
         <p>
