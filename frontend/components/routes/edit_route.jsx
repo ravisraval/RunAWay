@@ -3,21 +3,21 @@ import ReactDOM from 'react-dom';
 
 
 //make start marker green flag, end checkered
-class Map extends React.Component {
+class EditMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      travel_mode: "BICYCLING",
+      travel_mode: this.props.route.travel_mode,
       markers: [],
       waypoints: [],
-      waypoints_text: "",
-      distance: 0,
-      duration: 0,
-      elevation: "",
-      name: "",
-      notes: "",
-      bike_ok: true,
-      run_ok: true
+      waypoints_text: this.props.route.waypoints_text,
+      distance: this.props.route.distance,
+      duration: this.props.route.duration,
+      // elevation: this.props.route.travel_mode,
+      name: this.props.route.name,
+      notes: this.props.route.notes,
+      bike_ok: this.props.route.bike_ok,
+      run_ok: this.props.route.run_ok
     };
     this.handleToggleTravel = this.handleToggleTravel.bind(this);
     this.listenforClick = this.listenforClick.bind(this);
@@ -28,6 +28,7 @@ class Map extends React.Component {
     this.toggleBikeOk = this.toggleBikeOk.bind(this);
     this.toggleRunOk = this.toggleRunOk.bind(this);
     this.generateWaypointsText = this.generateWaypointsText.bind(this);
+    this.generateWaypoints = this.generateWaypoints.bind(this);
   }
 
   componentDidMount() {/*
@@ -54,12 +55,14 @@ class Map extends React.Component {
     this.directionsService = new google.maps.DirectionsService;
     this.distanceMatrixService = new google.maps.DistanceMatrixService();
     this.directionsDisplay.setMap(this.map);
+    this.generateWapoints();
 
     let input = document.getElementById('pac-input');
     let searchBox = new google.maps.places.SearchBox(input);
     this.registerListeners(searchBox, this.map);
     // this.listenForMove();
     this.listenforClick();
+    this.calcAndDisplayRoute();
   }
 
   errors() {
@@ -70,6 +73,14 @@ class Map extends React.Component {
         })
       );
     }
+  }
+
+  generateWaypoints() {
+    this.state.waypoints_text.split("|").forEach(point => {
+      let latt = point.split(",")[0];
+      let long = point.split(",")[1];
+      this.state.waypoints.push(new google.maps.LatLng(latt, long));
+    })
   }
 
   generateWaypointsText() {
@@ -205,8 +216,6 @@ class Map extends React.Component {
     // Create an ElevationService.
     let elevator = new google.maps.ElevationService;
     let path = this.state.waypoints.map((waypoint) => waypoint.location)
-
-
   }
 
   displayDuration() {
@@ -225,22 +234,20 @@ class Map extends React.Component {
   }
 
   render() {
-    const { biked } = this.state;
-    const { distance } = this.state;
+    const { biked, distance, duration, name, notes } = this.state;
   /*
    * the div that will become the map is just an empty div
    * we give it a 'ref' so we can easily get a pointer to the
    * actual dom node up in componentDidMount
    */
-
     return (
       <div>
         <ul>{this.errors()}</ul>
         <span>MAP DEMO</span>
-        <input className="name-route-input" onChange={this.update('name')} placeholder="Route name"/>
+        <input className="name-route-input" onChange={this.update('name')} value={name} placeholder="Route name"/>
         <button className={this.state.bike_ok ? 'active' : 'inactive'} onClick={this.toggleBikeOk}>Bike Friendly Route</button>
         <button className={this.state.run_ok ? 'active' : 'inactive'} onClick={this.toggleRunOk}>Run Friendly Route</button>
-        <textarea className="notes-route-input" onChange={this.update('notes')} placeholder="Route notes"/>
+        <textarea className="notes-route-input" onChange={this.update('notes')} value={notes} placeholder="Route notes"/>
         <button onClick={this.handleSubmit}>Update Route</button>
         <input id="pac-input" className="controls" type="text" placeholder="Search Box"/>
         <ul className="route-info-list">
@@ -259,4 +266,4 @@ class Map extends React.Component {
   }
 }
 
-export default editMap;
+export default EditMap;

@@ -19,8 +19,8 @@ class RouteShow extends React.Component {
         <li>Duration: {route.duration}</li>
         <li>Distance: {route.distance} miles</li>
         <li>Type: {route.travelMode}</li>
-        {route.bike_ok ? <li> Bike Ok Route</li>}
-        {route.run_ok ? <li> Run Ok Route</li>}
+        {route.bike_ok ? <li> Bike Ok Route</li> : null}
+        {route.run_ok ? <li> Run Ok Route</li>: null}
         <li>Notes: {route.notes}</li>
       </ul>
     </div>

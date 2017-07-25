@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-
+import RouteIndexItemContainer from './route_index_item_container';
 
 class RoutesIndex extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class RoutesIndex extends React.Component {
     const {routes} = this.props;
     if (!routes) {return null};
     const routeItems = this.props.routes.map(route => (
-        <RouteIndextemContainer
+        <RouteIndexItemContainer
           key={ route.id }
           route={ route }/>
       )
@@ -25,6 +25,7 @@ class RoutesIndex extends React.Component {
       <div className="routes-index-page">
         <h1>dem routes</h1>
         <ul className="routes-list">
+          {routeItems}
         </ul>
 
         <Link to='/home/new_route'><button className="new-route-btn">New Route</button></Link>

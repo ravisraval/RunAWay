@@ -18,6 +18,9 @@ class NewWorkout extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRadio = this.handleRadio.bind(this);
   }
+  componentDidMount() {
+    this.props.fetchRoutes();
+  }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -41,32 +44,26 @@ class NewWorkout extends React.Component {
 
   handleRadio(event) {
    const biked = event.currentTarget.value === 'true' ? true: false;
-   console.log('handle', biked);
    this.setState({ biked });
  }
 
   render() {
     const { biked } = this.state;
-    // <select
-    //   value={this.state.route_id}
-    //   onChange={this.update('route_id')}
-    //   defaultValue="Select Route (optional)">
-    //   {ROUTES.map((type, i) => {
-    //     return <option value={type} key={i}>{type}</option>;
-    //     })}
-    //   </select>
-    // <img src=MAKE THIS A GOOGLE MAP THINGY/>
-    // also this could be a scrolling modal
+    const { routes } = this.props;
+    // also this could be a scrolling modal IF TIME, MAKE SELECT ROUTE A SCROLLING MODAL
     return (
       <section className="new-workout-page">
         <ul>{this.errors()}</ul>
         <form className="workout-form" onSubmit={this.handleSubmit}>
+          <select
+            value={this.state.route_id}
+            onChange={this.update('route_id')}>
+            <option selected="selected" disabled="true" value="">Select Premade Route (optional)</option>
+            {routes.map((route) => {
+              return <option value={route.id} key={route.id}>{route.name}</option>;
+              })}
+            </select>
           <label><h3>Workout Title</h3>
-          <select>
-            <option value="" disabled="disabled" selected="selected">Saved Routes</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-          </select>
             <input
               type="text"
               value={this.state.title}

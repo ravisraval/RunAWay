@@ -8,11 +8,13 @@ import Landing from './landings/landing'
 import NavContainer from './nav_container';
 import NewRouteContainer from './routes/new_route_container';
 import NewWorkoutContainer from './workout/new_workout_container';
+import RouteIndexContainer from './routes/routes_index_container';
+import RouteEditContainer from './routes/edit_route_container';
+import RouteShowContainer from './routes/route_show_container';
 import SignupContainer from './signup_container';
+import StatsContainer from './stats/stats_container';
 import WorkoutsFeedContainer from './workout/workouts_feed_container';
 import WorkoutShowContainer from './workout/workout_show_container';
-import RouteIndexContainer from './routes/routes_index_container';
-import StatsContainer from './stats/stats_container';
 
 
 const redirectIfLoggedIn = (nextState, replace) => {
@@ -36,6 +38,8 @@ const Root = ({ store }) => (
         <Route exact path="/home/routes" component={RouteIndexContainer}/>
         <Route exact path="/home/new_route" component={NewRouteContainer}/>
         <Route exact path="/home/stats" component={StatsContainer}/>
+        <Route exact path="/home/routes/:routeId" component={RouteShowContainer}/>
+        <Route exact path="/home/routes/:routeId/edit" component={RouteEditContainer}/>
 
         <Footer/>
       </div>

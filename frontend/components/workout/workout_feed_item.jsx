@@ -11,16 +11,18 @@ class WorkoutFeedItem extends React.Component {
   }
   handleDelete(){
     this.props.destroyWorkout()
+    this.props.fetchRoutes();
   }
 
   render() {
-    const { workout, destroyWorkout } = this.props;
-
+    const { workout, destroyWorkout, routes } = this.props;
+    console.log(this.props.routes);
     return (
 
       <li className="workout-feed-item">
         <Link to={`/home/workouts/${workout.id}`}>
           <span> { workout.title } </span>
+          <span>Route: {routes}</span>
           <span> { workout.duration } </span>
         <span> { workout.distance } </span>
         <span> { workout.elevation_change } </span>

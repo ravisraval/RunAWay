@@ -14,20 +14,25 @@ class RouteIndexItem extends React.Component {
 
   render() {
     const { route, destroyRoute } = this.props;
-
+  console.log(route);
     return (
 
+      // <span> { route.elevation_change } </span>
       <li className="route-feed-item">
         <Link to={`/home/routes/${route.id}`}>
-          <span> { route.title } </span>
-          <span> { route.duration } </span>
-        <span> { route.distance } </span>
-        <span> { route.elevation_change } </span>
-      </Link>
+          <span> Name: { route.name } </span>
 
-      <button onClick={this.handleDelete} className="delete-button">Delete</button>
+          <span> Duration: { route.duration } </span>
+          <span> Distance: { route.distance } </span>
+          <li>Type: {route.travel_mode}</li>
+          {route.bike_ok ? <li> Bike Ok Route</li> : null}
+          {route.run_ok ? <li> Run Ok Route</li>: null}
+        </Link>
 
-
+        <button onClick={this.handleDelete} className="delete-button">Delete</button>
+        <Link to={`home/routes/${route.id}/edit`}>
+          <button className="edit-button">Edit</button>
+        </Link>
       </li>
     );
   }

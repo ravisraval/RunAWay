@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { withRouter } from 'react-router-dom'
 
 //make start marker green flag, end checkered
 class Map extends React.Component {
@@ -98,9 +98,7 @@ class Map extends React.Component {
       bike_ok: this.state.bike_ok,
       run_ok: this.state.run_ok
     };
-    this.props.createRoute(prop);
-    console.log("we got here");
-      // .then(data => this.props.history.push(`/home/routes/${data.route.id}`)); implement after making show
+    this.props.createRoute(prop).then(data => this.props.history.push(`/home/routes/${data.route.id}`));
   }
 
   registerListeners(searchBox, map){
@@ -259,4 +257,4 @@ class Map extends React.Component {
   }
 }
 
-export default Map;
+export default withRouter(Map);

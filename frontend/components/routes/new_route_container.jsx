@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 
-// import { newRoute } from '../actions/route_actions';
 import NewRoute from './new_route';
 
 
