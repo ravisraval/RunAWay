@@ -24,6 +24,8 @@ class Map extends React.Component {
     this.displayDuration = this.displayDuration.bind(this);
     this.displayElevation = this.displayElevation.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleBikeOk = this.toggleBikeOk.bind(this);
+    this.toggleRunOk = this.toggleRunOk.bind(this);
   }
 
   componentDidMount() {/*
@@ -82,12 +84,14 @@ class Map extends React.Component {
 
     searchBox.addListener('places_changed', function() {
       var place = searchBox.getPlaces()[0];
-      console.log(place);
       const latt = place.geometry.location.lat();
       const long = place.geometry.location.lng();
       map.panTo(new google.maps.LatLng(latt, long));
     });
   }
+
+  toggleRunOk() {this.setState({ run_ok : !this.state.run_ok})}
+  toggleBikeOk() {this.setState({ bike_ok : !this.state.bike_ok})}
 
   handleToggleTravel(e) {
     this.update('travelMode')(e);
@@ -107,7 +111,6 @@ class Map extends React.Component {
       placeMarker(e.latLng, this.map);});
 
     const placeMarker = (position, map) => {
-      console.log(this.state.travelMode);
       let marker = new google.maps.Marker({
           position: position,
           map: map
@@ -199,7 +202,6 @@ class Map extends React.Component {
   render() {
     const { biked } = this.state;
     const { distance } = this.state;
-    console.log(this.state.waypoints);
   /*
    * the div that will become the map is just an empty div
    * we give it a 'ref' so we can easily get a pointer to the
@@ -210,6 +212,8 @@ class Map extends React.Component {
       <div>
         <ul>{this.errors()}</ul>
         <span>MAP DEMO</span>
+        <button className={this.state.bike_ok ? 'active' : 'inactive'} onClick={this.toggleBikeOk}>Bike Friendly Route</button>
+        <button className={this.state.run_ok ? 'active' : 'inactive'} onClick={this.toggleRunOk}>Run Friendly Route</button>
         <button onClick={this.handleSubmit}>Save Route</button>
         <input id="pac-input" className="controls" type="text" placeholder="Search Box"/>
         <ul className="route-info-list">
