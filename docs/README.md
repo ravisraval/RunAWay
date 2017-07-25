@@ -21,6 +21,8 @@ Minimum Viable Product:
     - Bonus: Friends
     - Bonus: Workout Comments
     - Bonus: Social Feed
+    - Bonus: leaderboard for each route
+    - Bonus: Sort workouts by duration, time, etc.
 
 
 

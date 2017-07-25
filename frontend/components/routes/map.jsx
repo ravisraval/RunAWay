@@ -12,12 +12,18 @@ class Map extends React.Component {
       waypoints: [],
       distance: 0,
       duration: 0,
-      elevation: ""
+      elevation: "",
+      name: "",
+      notes: "",
+      bike_ok: true,
+      run_ok: true
     };
     this.handleToggleTravel = this.handleToggleTravel.bind(this);
     this.listenforClick = this.listenforClick.bind(this);
     this.calcAndDisplayRoute = this.calcAndDisplayRoute.bind(this);
     this.displayDuration = this.displayDuration.bind(this);
+    this.displayElevation = this.displayElevation.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {/*
@@ -44,11 +50,30 @@ class Map extends React.Component {
     this.directionsService = new google.maps.DirectionsService;
     this.distanceMatrixService = new google.maps.DistanceMatrixService();
     this.directionsDisplay.setMap(this.map);
+
     let input = document.getElementById('pac-input');
     let searchBox = new google.maps.places.SearchBox(input);
     this.registerListeners(searchBox, this.map);
     // this.listenForMove();
     this.listenforClick();
+  }
+
+  errors() {
+    if (this.props.errors) {
+      return (
+        this.props.errors.map(error => {
+          return (<li className="error" key={error}>{error}</li>);
+        })
+      );
+    }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log(this.props);
+
+    this.props.createRoute(this.state);
+      // .then(data => this.props.history.push(`/home/routes/${data.route.id}`)); implement after making show
   }
 
   registerListeners(searchBox, map){
@@ -95,7 +120,7 @@ class Map extends React.Component {
 
       if (markers.length > 1) {
         this.calcAndDisplayRoute();
-
+        this.displayElevation();
       }
     }
   }
@@ -147,6 +172,14 @@ class Map extends React.Component {
     }
   }
 
+  displayElevation() {
+    // Create an ElevationService.
+    let elevator = new google.maps.ElevationService;
+    let path = this.state.waypoints.map((waypoint) => waypoint.location)
+
+
+  }
+
   displayDuration() {
     let hsep = "";
     let msep = "";
@@ -162,19 +195,21 @@ class Map extends React.Component {
     return `${hsep}${hours}:${msep}${minutes}:${ssep}${sec}`;
   }
 
-  // Math.round(100 * duration / 60) / 100}
-
   render() {
     const { biked } = this.state;
     const { distance } = this.state;
+    console.log(this.state.waypoints);
   /*
    * the div that will become the map is just an empty div
    * we give it a 'ref' so we can easily get a pointer to the
    * actual dom node up in componentDidMount
    */
+
     return (
       <div>
+        <ul>{this.errors()}</ul>
         <span>MAP DEMO</span>
+        <button onClick={this.handleSubmit}>Save Route</button>
         <input id="pac-input" className="controls" type="text" placeholder="Search Box"/>
         <ul className="route-info-list">
           <li>Distance: {Math.round(100 * distance / 1609.34) / 100} miles</li>
@@ -186,6 +221,7 @@ class Map extends React.Component {
           <button value="WALKING" onClick={this.handleToggleTravel}>Run</button>
         </div>
         <div id='map' ref='map'/>
+        <div id="elevation_chart"></div>
       </div>
     );
   }

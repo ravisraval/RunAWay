@@ -40,4 +40,4 @@ export const createWorkout = workout => dispatch => (
 );
 
 export const deleteWorkout = workout => dispatch => (
-  APIUtil.deleteWorkout(workout).then(workout => dispatch(removeWorkout(workout))));
+  APIUtil.deleteWorkout(workout).then(() => dispatch(removeWorkout(workout))));

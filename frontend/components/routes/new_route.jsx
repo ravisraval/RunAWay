@@ -1,5 +1,5 @@
 import React from 'react';
-import Map from './map';
+import MapContainer from './map_container';
 
 class NewRoute extends React.Component {
   constructor() {
@@ -13,7 +13,7 @@ class NewRoute extends React.Component {
       <div className="new-route-page">
         <div className="route-builder">
           <h1>Build A Route</h1>
-          <Map center={startingMapCenter}/>,
+          <MapContainer center={startingMapCenter}/>,
         </div>
       </div>
     );

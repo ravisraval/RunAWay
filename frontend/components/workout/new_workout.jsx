@@ -58,9 +58,7 @@ class NewWorkout extends React.Component {
     // <img src=MAKE THIS A GOOGLE MAP THINGY/>
     return (
       <section className="new-workout-page">
-        <ul>
-          {this.errors()}
-        </ul>
+        <ul>{this.errors()}</ul>
         <form className="workout-form" onSubmit={this.handleSubmit}>
           <label><h3>Workout Title</h3>
             <input
