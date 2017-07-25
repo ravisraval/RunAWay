@@ -10,6 +10,7 @@ class Map extends React.Component {
       travelMode: "BICYCLING",
       markers: [],
       waypoints: [],
+      waypointsText: "",
       distance: 0,
       duration: 0,
       elevation: "",
@@ -212,8 +213,10 @@ class Map extends React.Component {
       <div>
         <ul>{this.errors()}</ul>
         <span>MAP DEMO</span>
+        <input className="name-route-input" onChange={this.update('name')} placeholder="Route name"/>
         <button className={this.state.bike_ok ? 'active' : 'inactive'} onClick={this.toggleBikeOk}>Bike Friendly Route</button>
         <button className={this.state.run_ok ? 'active' : 'inactive'} onClick={this.toggleRunOk}>Run Friendly Route</button>
+        <textarea className="notes-route-input" onChange={this.update('notes')} placeholder="Route notes"/>
         <button onClick={this.handleSubmit}>Save Route</button>
         <input id="pac-input" className="controls" type="text" placeholder="Search Box"/>
         <ul className="route-info-list">
