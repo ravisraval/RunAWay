@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725175358) do
+ActiveRecord::Schema.define(version: 20170725203638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170725175358) do
     t.boolean "run_ok"
     t.boolean "bike_ok"
     t.integer "elevation_change"
+    t.string "travel_mode"
     t.index ["user_id"], name: "index_routes_on_user_id"
   end
 

@@ -4,7 +4,7 @@ class Workout < ApplicationRecord
                         numericality: { greater_than: 0,
                                         allow_nil: true  }
   belongs_to :user
-  # belongs_to :route
+  belongs_to :route
 
   def duration
     hsep = ""

@@ -241,7 +241,7 @@ class Map extends React.Component {
         <button className={this.state.bike_ok ? 'active' : 'inactive'} onClick={this.toggleBikeOk}>Bike Friendly Route</button>
         <button className={this.state.run_ok ? 'active' : 'inactive'} onClick={this.toggleRunOk}>Run Friendly Route</button>
         <textarea className="notes-route-input" onChange={this.update('notes')} placeholder="Route notes"/>
-        <button onClick={this.handleSubmit}>Save Route</button>
+        <button onClick={this.handleSubmit}>Update Route</button>
         <input id="pac-input" className="controls" type="text" placeholder="Search Box"/>
         <ul className="route-info-list">
           <li>Distance: {Math.round(100 * distance / 1609.34) / 100} miles</li>
@@ -259,4 +259,4 @@ class Map extends React.Component {
   }
 }
 
-export default Map;
+export default editMap;

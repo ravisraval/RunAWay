@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 
 import RoutesIndex from './routes_index';
-// import { fetchWorkouts } from '../../actions/workout_actions';
-// import { allWorkouts } from '../../reducers/selectors';
+import { fetchRoutes } from '../../actions/route_actions';
+import { allRoutes } from '../../reducers/selectors';
 
-// const mapStateToProps = state => ({
-//
-// })
-//
-// const mapDispatchToProps = dispatch => ({
-//   fetchWorkouts: () => dispatch(fetchWorkouts())
-// });
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchRoutes: () => dispatch(fetchRoutes())
+});
 
 export default connect(
-  null,
-  null
+  mapStateToProps,
+  mapDispatchToProps
 )(RoutesIndex);

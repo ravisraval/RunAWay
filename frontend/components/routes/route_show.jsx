@@ -11,14 +11,16 @@ class RouteShow extends React.Component {
   }
   render() {
     const { route } = this.props;
+    // <li>Elevation change: {route.elevation_change}</li>
     return (
     <div>
       <ul className="route-show">
-        <li>Title: {route.title}</li>
+        <li>Name: {route.name}</li>
         <li>Duration: {route.duration}</li>
         <li>Distance: {route.distance} miles</li>
-        <li>Elevation change: {route.elevation_change}</li>
-        <li>Type: {route.biked ? "Bike" : "Run"}</li>
+        <li>Type: {route.travelMode}</li>
+        {route.bike_ok ? <li> Bike Ok Route</li>}
+        {route.run_ok ? <li> Run Ok Route</li>}
         <li>Notes: {route.notes}</li>
       </ul>
     </div>

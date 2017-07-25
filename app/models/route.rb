@@ -9,7 +9,7 @@ end
 class Route < ApplicationRecord
   include ActiveModel::Validations
   validates_with EnsureATravel
-  validates :distance, :duration, :name, :waypoints_text, presence: true;
+  validates :distance, :duration, :name, :waypoints_text, :travel_mode, presence: true;
   validates :name, uniqueness: true
 
   has_many :workouts

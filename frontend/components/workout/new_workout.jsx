@@ -56,11 +56,17 @@ class NewWorkout extends React.Component {
     //     })}
     //   </select>
     // <img src=MAKE THIS A GOOGLE MAP THINGY/>
+    // also this could be a scrolling modal
     return (
       <section className="new-workout-page">
         <ul>{this.errors()}</ul>
         <form className="workout-form" onSubmit={this.handleSubmit}>
           <label><h3>Workout Title</h3>
+          <select>
+            <option value="" disabled="disabled" selected="selected">Saved Routes</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+          </select>
             <input
               type="text"
               value={this.state.title}
@@ -119,11 +125,6 @@ class NewWorkout extends React.Component {
               onChange={this.update('notes')}
             />
           </label>
-          <select>
-            <option value="" disabled="disabled" selected="selected">Saved Routes</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-          </select>
           <button type="submit">Create Workout</button>
         </form>
       </section>
