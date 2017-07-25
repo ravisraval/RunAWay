@@ -27,6 +27,7 @@ class Map extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleBikeOk = this.toggleBikeOk.bind(this);
     this.toggleRunOk = this.toggleRunOk.bind(this);
+    this.generateWaypointsText = this.generateWaypointsText.bind(this);
   }
 
   componentDidMount() {/*
@@ -71,7 +72,12 @@ class Map extends React.Component {
     }
   }
 
+  generateWaypointsText() {
+
+  }
+
   handleSubmit(e) {
+    this.generateWaypointsText();
     alert("David, calm down, I'm working on saving routes.");
     // e.preventDefault();
     // console.log(this.props);

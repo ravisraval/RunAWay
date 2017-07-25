@@ -4,6 +4,7 @@ class EnsureATravel < ActiveModel::Validator
       record.errors[:base] << "Please designate at least one acceptable travel mode."
     end
   end
+end
 
 class Route < ApplicationRecord
   include ActiveModel::Validations
