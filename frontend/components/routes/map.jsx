@@ -69,10 +69,11 @@ class Map extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    console.log(this.props);
-
-    this.props.createRoute(this.state);
+    alert("David, calm down, I'm working on saving routes.");
+    // e.preventDefault();
+    // console.log(this.props);
+    //
+    // this.props.createRoute(this.state);
       // .then(data => this.props.history.push(`/home/routes/${data.route.id}`)); implement after making show
   }
 
