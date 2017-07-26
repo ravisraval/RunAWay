@@ -7,13 +7,16 @@ class NewWorkout extends React.Component {
     this.state = {
       user_id: null,
       route_id: null,
+      date: null,
+      start_time: null,
       title: '',
       notes: '',
-      distance: 0,
-      elevation_change: 0,
-      duration_seconds: 0,
+      distance: '',
+      elevation_change: '',
+      seconds: '',
+      minutes: '',
+      hours: '',
       biked: null,
-      date_time: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRadio = this.handleRadio.bind(this);
@@ -53,78 +56,148 @@ class NewWorkout extends React.Component {
     // also this could be a scrolling modal IF TIME, MAKE SELECT ROUTE A SCROLLING MODAL
     return (
       <section className="new-workout-page">
+
         <ul>{this.errors()}</ul>
+        <h1 className="page-header">Log a New Workout</h1>
+
         <form className="workout-form" onSubmit={this.handleSubmit}>
-          <select
-            value={this.state.route_id}
-            onChange={this.update('route_id')}>
-            <option selected="selected" disabled="true" value="">Select Premade Route (optional)</option>
-            {routes.map((route) => {
-              return <option value={route.id} key={route.id}>{route.name}</option>;
-              })}
-            </select>
-          <label><h3>Workout Title</h3>
-            <input
-              type="text"
-              value={this.state.title}
-              placeholder="Route Title"
-              onChange={this.update('title')}
-            />
-          </label>
-          <label>
-            <h3>Distance (miles)</h3>
-            <input
-              type="number"
-              value={this.state.distance}
-              placeholder="Distance (miles)"
-              onChange={this.update('distance')}
-            />
-          </label>
-          <label>
-            <h3>Duration (for some reason put seconds, change this to take in hours, minutes, seconds)</h3>
-            <input
-              type="number"
-              value={this.state.duration_seconds}
-              placeholder="Duration"
-              onChange={this.update('duration_seconds')}
-            />
-          </label>
-          <label>
-            <h3>Elevation change</h3>
-            <input
-              type="number"
-              value={this.state.elevation_change}
-              onChange={this.update('elevation_change')}
-            />
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="biked"
-              value="true"
-              checked={biked === true}
-              onChange={this.handleRadio}
-            />Bike
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="biked"
-              value="false"
-              checked={biked === false}
-              onChange={this.handleRadio}
-            />Run
-          </label>
-          <label><h3>Notes</h3>
-            <input
-              value={this.state.notes}
-              placeholder="Notes"
-              onChange={this.update('notes')}
-            />
-          </label>
-          <button type="submit">Create Workout</button>
+
+          <section className="form-section">
+            <label className="boxed-inputs">
+
+              <h3>Workout Title</h3>
+              <div>
+                <p><input
+                  className="title-input"
+                  type="text"
+                  value={this.state.title}
+                  placeholder="Morning Jog"
+                  onChange={this.update('title')}
+                /></p>
+              </div>
+            </label>
+          </section>
+
+          <section className="form-section">
+            <label className="boxed-inputs">
+              <h3>Distance</h3>
+              <div>
+              <p><input
+                type="number"
+                value={this.state.distance}
+                placeholder="0"
+                onChange={this.update('distance')}
+              />mi</p>
+            </div>
+            </label>
+
+
+            <label className="boxed-inputs">
+              <h3>Duration</h3>
+
+              <div>
+                <p><input
+                  type="text"
+                  value={this.state.hours}
+                  placeholder="00"
+                  onChange={this.update('hours')}
+                />h</p>
+
+              <p><input
+                  type="text"
+                  value={this.state.minutes}
+                  placeholder="00"
+                  onChange={this.update('minutes')}
+                />m</p>
+
+              <p><input
+                  type="number"
+                  value={this.state.seconds}
+                  placeholder="00"
+                  onChange={this.update('seconds')}
+                />s</p>
+              </div>
+            </label>
+
+
+            <label className="boxed-inputs">
+              <h3>Elevation change</h3>
+              <div>
+                <p><input
+                  type="number"
+                  value={this.state.elevation_change}
+                  placeholder="0"
+                  onChange={this.update('elevation_change')}
+                />ft</p>
+              </div>
+            </label>
+
+          </section>
+
+          <section className="form-section">
+
+            <div className="activity-type">
+              <div className="label-no-worky"><h3>Activity Type</h3>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="biked"
+                    value="true"
+                    checked={biked === true}
+                    onChange={this.handleRadio}
+                  />Bike
+                </label>
+
+                <label>
+
+                  <input
+                    type="radio"
+                    name="biked"
+                    value="false"
+                    checked={biked === false}
+                    onChange={this.handleRadio}
+                  />Run
+
+                </label>
+
+              </div>
+            </div>
+
+
+
+            <label><h3>Add a Route</h3>
+
+              <select className="workout-input"
+                value={this.state.route_id}
+                onChange={this.update('route_id')}>
+                <option selected="selected" disabled="true" value="">Select Premade Route (optional)</option>
+                {routes.map((route) => {
+                  return <option value={route.id} key={route.id}>{route.name}</option>;
+                  })}
+              </select>
+
+            </label>
+          </section>
+
+          <section className="form-section">
+
+            <label><h3>Notes</h3>
+
+              <input
+                value={this.state.notes}
+                placeholder="Notes"
+                onChange={this.update('notes')}
+              />
+
+            </label>
+
+            <button type="submit">Create Workout</button>
+          </section>
+
         </form>
-      </section>
+
+        </section>
     );
   }
 }

@@ -1,14 +1,84 @@
+
+// grid-making
+
 .new-workout-page {
-  position: relative;
-  top: 90px;
+  width: 800px;
 }
 
 .workout-form {
-  position: relative;
-  left:40%;
-  top: 120px;
+  margin: 40px;
+  padding: 10px 20px;
+
   input {
     border-radius:3px;
   }
 
+}
+
+// section-formatting
+
+.form-section {
+  display: flex;
+  border-bottom: 1px solid grey;
+
+  label, .label-no-worky {
+    margin: 15px;
+  }
+}
+
+.form-section:last-of-type {
+  border: none;
+}
+
+
+// input formatting
+
+.boxed-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 15px;
+
+  div {
+    display: flex;
+    justify-content: center;
+
+    input {
+      width: 20px;
+      margin: 0 5px;
+      text-align: right;
+      outline: none;
+      font-size: 14px;
+    }
+
+    input.title-input {
+      width: 500px;
+      text-align: left
+    }
+
+    input:active {
+      outline: none;
+    }
+
+    p {
+      border: 1px solid grey;
+      border-right: none;
+
+      padding: 2px 5px;
+
+      align-content: center;
+
+      font-size: 12px;
+      color: grey;
+    }
+
+    p:last-of-type {
+      border-right: 1px solid grey;
+    }
+
+  }
+}
+
+.activity-type {
+  align-content: center;
 }

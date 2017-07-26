@@ -23,13 +23,21 @@ class WorkoutFeedItem extends React.Component {
       <li className="workout-feed-item">
 
         <Link to={`/home/workouts/${workout.id}`}>
-
-          <span> { workout.title } </span>
-          <span> { workout.duration } </span>
-          <span> { workout.distance } </span>
-          <span> { workout.elevation_change } </span>
-
+          { workout.title }
         </Link>
+
+        <div className="date-time-info">
+          
+
+        </div>
+
+        <div className="workout-info">
+
+
+        </div>
+        <span> { workout.duration } </span>
+        <span> { workout.distance } </span>
+        <span> { workout.elevation_change } </span>
 
       </li>
     );
