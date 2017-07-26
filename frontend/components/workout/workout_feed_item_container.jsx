@@ -2,18 +2,19 @@ import { connect } from 'react-redux';
 
 import WorkoutFeedItem from './workout_feed_item';
 import { deleteWorkout } from '../../actions/workout_actions';
-import { fetchRoutes } from '../../actions/route_actions';
-import { allRoutes } from '../../reducers/selectors';
+import { fetchRoute } from '../../actions/route_actions';
+import { selectRoute } from '../../reducers/selectors';
+//
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
   errors: state.errors,
-  routes: allRoutes(state)
+  // route: selectRoute(state, state.workout.route_id)
 });
 
 const mapDispatchToProps = (dispatch, {workout}) => ({
   destroyWorkout: () => dispatch(deleteWorkout(workout)),
-  fetchRoutes: () => dispatch(fetchRoutes())
+  fetchRoute: id => dispatch(fetchRoute(id))
 });
 
 export default connect(

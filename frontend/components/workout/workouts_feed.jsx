@@ -24,7 +24,6 @@ class WorkoutsFeed extends React.Component {
     );
     return (
       <div className="workouts-feed">
-        <h1>hi david</h1>
         <ul className="workout-list">
           {workoutItems}
         </ul>

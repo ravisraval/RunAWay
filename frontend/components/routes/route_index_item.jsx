@@ -24,13 +24,13 @@ class RouteIndexItem extends React.Component {
 
           <span> Duration: { route.duration } </span>
           <span> Distance: { route.distance } </span>
-          <li>Type: {route.travel_mode}</li>
-          {route.bike_ok ? <li> Bike Ok Route</li> : null}
-          {route.run_ok ? <li> Run Ok Route</li>: null}
+          <span>Type: {route.travel_mode}</span>
+          {route.bike_ok ? <span> Bike Ok Route</span> : null}
+          {route.run_ok ? <span> Run Ok Route</span>: null}
         </Link>
 
         <button onClick={this.handleDelete} className="delete-button">Delete</button>
-        <Link to={`home/routes/${route.id}/edit`}>
+        <Link to={`/home/routes/${route.id}/edit`}>
           <button className="edit-button">Edit</button>
         </Link>
       </li>
