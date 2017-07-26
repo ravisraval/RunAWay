@@ -52,7 +52,7 @@ class NewWorkout extends React.Component {
     const { routes } = this.props;
     // also this could be a scrolling modal IF TIME, MAKE SELECT ROUTE A SCROLLING MODAL
     return (
-      <section className="new-workout-page">
+      <section className="full-page-component">
 
         <ul>{this.errors()}</ul>
         <h1 className="page-header">Log a New Workout</h1>

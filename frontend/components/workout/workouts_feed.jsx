@@ -23,7 +23,7 @@ class WorkoutsFeed extends React.Component {
       )
     );
     return (
-    <div className="workouts-feed-page">
+    <div className="full-page-component">
 
       <h1 className="page-header">
         Workout Feed</h1>

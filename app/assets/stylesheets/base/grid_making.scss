@@ -1,0 +1,15 @@
+.full-page-component {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 40px;
+  margin-top: 40px;
+
+  width: 900px;
+}
+
+.page-header {
+    font-size: 40px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid grey;
+}
