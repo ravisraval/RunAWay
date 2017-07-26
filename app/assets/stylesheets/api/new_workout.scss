@@ -3,10 +3,12 @@
 
 .new-workout-page {
   width: 800px;
+  margin-bottom: 50px;
 }
 
 .workout-form {
-  margin: 40px;
+  margin-left: 40px;
+  margin-top: 10px;
   padding: 10px 20px;
 
   input {
@@ -53,7 +55,8 @@
 
     input.title-input {
       width: 500px;
-      text-align: left
+      text-align: left;
+
     }
 
     input:active {
@@ -81,4 +84,31 @@
 
 .activity-type {
   align-content: center;
+}
+
+.submit-button {
+  background-color: white;
+
+  color: black;
+  font-weight: lighter;
+  font-size: 12px;
+
+  border: 1px gray solid;
+  border-radius: 1px;
+  outline: none;
+
+  margin: 5px 10px;
+  padding: 7px;
+
+}
+
+.submit-button:hover {
+  color: black;
+  background-color: lightgrey;
+
+}
+
+textarea {
+  margin: 10px;
+  padding: 7px 10px;
 }

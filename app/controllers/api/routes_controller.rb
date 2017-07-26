@@ -2,6 +2,8 @@ class Api::RoutesController < ApplicationController
   before_action :require_signed_in
 
   def create
+    parsed_params = route_params.except(:hours, :minutes, :seconds)
+
     @route = Route.new(route_params)
     @route.user_id = current_user.id
 
@@ -42,6 +44,6 @@ class Api::RoutesController < ApplicationController
 
   private
   def route_params
-    params.require(:route).permit(:name, :waypoints_text, :notes, :distance, :elevation_change, :bike_ok, :run_ok, :duration, :travel_mode)
+    params.require(:route).permit(:name, :waypoints_text, :notes, :distance, :elevation_change, :bike_ok, :run_ok, :hours, :minutes, :seconds, :travel_mode)
   end
 end

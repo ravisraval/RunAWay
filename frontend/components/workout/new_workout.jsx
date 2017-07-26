@@ -184,16 +184,19 @@ class NewWorkout extends React.Component {
 
             <label><h3>Notes</h3>
 
-              <input
+              <textarea
                 value={this.state.notes}
-                placeholder="Notes"
+                placeholder="comments, progress, descriptions"
                 onChange={this.update('notes')}
-              />
+                rows="5"
+                cols="50"
+              ></textarea>
 
             </label>
 
-            <button type="submit">Create Workout</button>
           </section>
+
+          <button className="submit-button" type="submit">Create Workout</button>
 
         </form>
 
