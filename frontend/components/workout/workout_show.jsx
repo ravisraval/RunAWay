@@ -22,6 +22,9 @@ class WorkoutShow extends React.Component {
         <li>Type: {workout.biked ? "Bike" : "Run"}</li>
         <li>Notes: {workout.notes}</li>
       </ul>
+
+          <button onClick={this.props.destroyWorkout} className="delete-button">Delete</button>
+
     </div>
   );
 };

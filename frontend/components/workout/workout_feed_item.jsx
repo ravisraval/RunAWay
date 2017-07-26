@@ -21,13 +21,16 @@ class WorkoutFeedItem extends React.Component {
     return (
 
       <li className="workout-feed-item">
+
         <Link to={`/home/workouts/${workout.id}`}>
+
           <span> { workout.title } </span>
           <span> { workout.duration } </span>
-        <span> { workout.distance } </span>
-        <span> { workout.elevation_change } </span>
-      </Link>
-      <button onClick={this.handleDelete} className="delete-button">Delete</button>
+          <span> { workout.distance } </span>
+          <span> { workout.elevation_change } </span>
+
+        </Link>
+
       </li>
     );
   }

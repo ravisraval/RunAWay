@@ -23,13 +23,27 @@ class WorkoutsFeed extends React.Component {
       )
     );
     return (
-      <div className="workouts-feed">
-        <ul className="workout-list">
-          {workoutItems}
-        </ul>
+    <div className="workouts-feed-page">
 
-        <Link to='/home/new_workout'><button className="new-workout-btn">New Workout</button></Link>
+      <h1 className="page-header">
+        Workout Feed</h1>
+
+      <div className="workouts-feed">
+
+        <div className="workouts-index">
+          <ul className="workout-list">
+            {workoutItems}
+          </ul>
+        </div>
+
+        <div className="workout-links">
+          <Link to='/home/new_workout'><button className="new-workout-btn">Add a Workout</button></Link>
+          <Link to='/home/new_route'><button className="new-workout-btn">Add a route</button></Link>
+        </div>
+
       </div>
+
+    </div>
     );
   }
 }

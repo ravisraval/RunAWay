@@ -13,7 +13,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch, {workout}) => ({
-  destroyWorkout: () => dispatch(deleteWorkout(workout)),
   fetchRoute: id => dispatch(fetchRoute(id))
 });
 

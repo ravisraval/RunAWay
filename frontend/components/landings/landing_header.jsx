@@ -72,20 +72,17 @@ class LandingHeader extends React.Component{
                 <input type="text" placeholder="Username"
                    value={this.state.username}
                    onChange={this.update('username')}
-                   className="signup-input"/>
+                   className="login-input"/>
                  </li>
                  <li>
                  <input type="password" placeholder="Password"
                     value={this.state.password}
                     onChange={this.update('password')}
-                    className="signup-input"
+                    className="login-input"
                   />
                 </li>
-                <li>
+                <li className="last-list-item">
                 <button className="session-link" type="submit">Log In</button>
-                </li>
-                <li>
-
                 </li>
             </form>
             </ul>

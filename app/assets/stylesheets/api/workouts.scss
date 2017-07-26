@@ -1,15 +1,50 @@
-.workouts-feed {
-  position: relative;
-  top:90px;
-
-  body{
-  background: #111;
+.workouts-feed-page {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
 }
 
+.workouts-feed{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 25px;
+
+}
+
+.page-header {
+    font-size: 40px;
+    margin-left: 40px;
+    margin-top: 40px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid grey;
+}
+
+// workouts index
+
+  .workouts-index {
+    width: 50%;
+  }
+
+  .workout-feed-item {
+    
+  }
+
+
+
+// workout links
+
+
+
+.workout-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
 .new-workout-btn {
-  position: absolute;
-  top: 0;
-  right: 3%;
+
   background: #333;
   color: #ccc;
   width: 200px;
@@ -20,6 +55,8 @@
   font-family: 'Raleway', sans-serif;
   transition: .6s;
   overflow: hidden;
+  margin: 15px;
+
   &:focus{
     outline: 0;
   }
@@ -59,5 +96,4 @@
       transition: .7s;
     }
   }
-}
 }

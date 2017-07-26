@@ -53,13 +53,8 @@ ul.landing-header-list {
 .login-form-list {
 
 
-  input {
-    border: transparent;
-    border-radius: 5px;
-    height:30px;
-    font-size: 14px;
-    width: 150px;
-    margin-right: 12px;
+  li:last-of-type {
+    margin-left: 15px;
   }
 
 }
@@ -78,7 +73,7 @@ ul.landing-header-list {
   font-weight: lighter;
   width: 100px;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 3px;
   color: white;
   background: transparent;
   border: 1px solid white;
@@ -87,6 +82,7 @@ ul.landing-header-list {
   transition: .6s;
   margin-right: 5%;
 }
+
 .session-link:hover {
   background-color: rgba(255,255,255,.5);
 }
@@ -94,4 +90,10 @@ ul.landing-header-list {
 .session-link:active{
   outline:none;
   transform: translate(0, 1px);
+}
+
+.login-input {
+  margin: 13px;
+  padding: 4px;
+  border-radius: 2px;
 }
