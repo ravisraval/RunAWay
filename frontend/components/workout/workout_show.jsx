@@ -13,10 +13,10 @@ class WorkoutShow extends React.Component {
   render() {
     const { workout } = this.props;
     return (
-    <div>
+    <div className="full-page-component">
+      <h1 className="page-header">{workout.title}</h1>
       <ul className="workout-show">
-        <li>Title: {workout.title}</li>
-        <li>Duration: {workout.duration}</li>
+        <li>Duration: {workout.duration_string}</li>
         <li>Distance: {workout.distance} miles</li>
         <li>Elevation change: {workout.elevation_change}</li>
         <li>Type: {workout.biked ? "Bike" : "Run"}</li>

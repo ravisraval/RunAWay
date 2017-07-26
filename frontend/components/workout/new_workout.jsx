@@ -5,10 +5,7 @@ class NewWorkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: null,
       route_id: null,
-      date: null,
-      start_time: null,
       title: '',
       notes: '',
       distance: '',
