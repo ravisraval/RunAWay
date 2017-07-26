@@ -15,25 +15,47 @@
 
 
 // workouts index
-
+  .workout-list {
+    margin-top: 15px;
+  }
   .workouts-index {
-    width: 50%;
+    width: 500px;
+  }
+
+  .feed-item-header {
+    font-size: 17px
   }
 
   .workout-feed-item {
-
+    margin: 25px 0 ;
+    display: flex;
+    align-items: center;
   }
 
+  .workout-feed-item:first-of-type {
+    margin: 0px
+  }
 
+  .workout-info {
+    span {
+      margin: 0 10px;
+      color: grey;
+      font-size: 15px;
+    }
+
+    span:first-of-type {
+      margin-left: 0;
+    }
+  }
 
 // workout links
-
-
 
 .workout-links {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
+  width: 250px;
 }
 
 

@@ -27,7 +27,6 @@ class Map extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleBikeOk = this.toggleBikeOk.bind(this);
     this.toggleRunOk = this.toggleRunOk.bind(this);
-    this.generateWaypointsText = this.generateWaypointsText.bind(this);
   }
 
   componentDidMount() {/*
@@ -72,20 +71,8 @@ class Map extends React.Component {
     }
   }
 
-  generateWaypointsText() {
-    let text = "";
-    this.state.waypoints.forEach(waypoint => {
-      text += `${waypoint.location.lat()},${waypoint.location.lng()}|`
-    });
-    this.state.waypoints_text = text.substring(0, text.length - 1);
-
-  }
-
   handleSubmit(e) {
-    this.generateWaypointsText();
-    // alert("David, calm down, I'm working on saving routes.");
     e.preventDefault();
-    console.log(this.props);
     //
     let prop = {
       travel_mode: this.state.travel_mode,
@@ -145,7 +132,7 @@ class Map extends React.Component {
       markers.push(marker);
 
       if (markers.length > 1) {
-
+        markers.forEach(marker => {marker.setMap(null)})
         this.calcAndDisplayRoute();
         this.displayElevation();
       }
@@ -153,6 +140,7 @@ class Map extends React.Component {
   }
 
   calcAndDisplayRoute() {
+    console.log("happening!!!!!!!!!!!!!!!!!!!!!!!!!!1");
     const {markers} = this.state;
     const {waypoints} = this.state;
 
@@ -167,9 +155,11 @@ class Map extends React.Component {
     (response, status) => {
       if (status == 'OK') {
         this.directionsDisplay.setDirections(response);
+        this.setState({waypoints_text: response.routes[0].overview_polyline});
       }
-    });
+    })
     this.calcAndDisplayInfo();
+    console.log(this.state);
   }
 
   calcAndDisplayInfo(){
@@ -203,8 +193,6 @@ class Map extends React.Component {
     // Create an ElevationService.
     let elevator = new google.maps.ElevationService;
     let path = this.state.waypoints.map((waypoint) => waypoint.location)
-
-
   }
 
   displayDuration() {
@@ -241,6 +229,7 @@ class Map extends React.Component {
         <textarea className="notes-route-input" onChange={this.update('notes')} placeholder="Route notes"/>
         <button onClick={this.handleSubmit}>Save Route</button>
         <input id="pac-input" className="controls" type="text" placeholder="Search Box"/>
+        <button className="clear-button" onClick={() => location.reload()}>Reset</button>
         <ul className="route-info-list">
           <li>Distance: {Math.round(100 * distance / 1609.34) / 100} miles</li>
           <li>Duration: {this.displayDuration()}</li>

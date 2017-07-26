@@ -1,15 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 
 // const BenchShow = ({ workout, benchId, fetchBench }) => {
 // <img className="index-image" src={workout.route.}/> put this in line 12.5
 class WorkoutShow extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+    this.handleDelete = this.handleDelete.bind(this)
+  }
 
   componentDidMount() {
     this.props.fetchWorkout(this.props.workoutId);
   }
+
+  handleDelete(e) {
+    this.props.destroyWorkout(this.props.workout)
+    .then( () => this.props.history.push('/home/workouts'))
+  }
+
   render() {
     const { workout } = this.props;
     return (
@@ -23,11 +35,14 @@ class WorkoutShow extends React.Component {
         <li>Notes: {workout.notes}</li>
       </ul>
 
-          <button onClick={this.props.destroyWorkout} className="delete-button">Delete</button>
+        <button
+          onClick={this.handleDelete} className="delete-button">
+          Delete
+        </button>
 
     </div>
   );
 };
 };
 
-export default WorkoutShow;
+export default withRouter(WorkoutShow);

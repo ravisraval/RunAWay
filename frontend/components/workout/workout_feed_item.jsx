@@ -17,28 +17,31 @@ class WorkoutFeedItem extends React.Component {
   }
   render() {
     const { workout, destroyWorkout, routes } = this.props;
+    const icon = workout.biked ? 'bike-icon' : 'run-icon'
     // <span>Route: {route.title}</span>
     return (
 
       <li className="workout-feed-item">
+        <div className={icon}></div>
 
-        <Link to={`/home/workouts/${workout.id}`}>
-          { workout.title }
-        </Link>
+        <div className="info">
 
-        <div className="date-time-info">
-          
+          <Link
+            className="feed-item-header"
+            to={`/home/workouts/${workout.id}`}>
+            { workout.title }
+          </Link>
+
+          <div className="date-time-info"></div>
+
+          <div className="workout-info">
+
+            <span> Duration: { workout.duration_string } </span> |
+            <span> { workout.distance } mi</span>
+
+          </div>
 
         </div>
-
-        <div className="workout-info">
-
-
-        </div>
-        <span> { workout.duration } </span>
-        <span> { workout.distance } </span>
-        <span> { workout.elevation_change } </span>
-
       </li>
     );
   }

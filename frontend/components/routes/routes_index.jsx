@@ -23,7 +23,7 @@ class RoutesIndex extends React.Component {
     );
     return (
       <div className="routes-index-page">
-        <h1>dem routes</h1>
+        <h1>Your Routes</h1>
         <ul className="routes-list">
           {routeItems}
         </ul>

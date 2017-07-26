@@ -36,7 +36,7 @@ const Root = ({ store }) => (
         <Route exact path="/home/workouts" component={WorkoutsFeedContainer}/>
         <Route exact path="/home/new_workout" component={NewWorkoutContainer}/>
         <Route exact path="/home/workouts/:workoutId" component={WorkoutShowContainer}/>
-        <Route exact path="/home/routes" component={RouteIndexContainer}/>
+        <Route path="/home/routes" component={RouteIndexContainer}/>
         <Route exact path="/home/new_route" component={NewRouteContainer}/>
         <Route exact path="/home/stats" component={StatsContainer}/>
         <Route exact path="/home/routes/:routeId" component={RouteShowContainer}/>

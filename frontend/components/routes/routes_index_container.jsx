@@ -5,7 +5,8 @@ import { fetchRoutes } from '../../actions/route_actions';
 import { allRoutes } from '../../reducers/selectors';
 
 const mapStateToProps = state => ({
-  routes: allRoutes(state)
+  routes: allRoutes(state),
+  currentUser: state.session.currentUser
 })
 
 const mapDispatchToProps = dispatch => ({
