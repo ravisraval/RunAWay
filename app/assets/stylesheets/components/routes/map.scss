@@ -1,0 +1,20 @@
+.new-route-page {
+  position: relative;
+  overflow-y:hidden;
+  // top: 90px;
+}
+
+.active {
+  background: green;
+}
+
+.inactive {
+  background: red;
+}
+
+.map-bar {
+  display: flex;
+  // justify-content: space-around;
+  max-height: 40px;
+  padding-bottom:5px;
+}

@@ -140,7 +140,6 @@ class Map extends React.Component {
   }
 
   calcAndDisplayRoute() {
-    console.log("happening!!!!!!!!!!!!!!!!!!!!!!!!!!1");
     const {markers} = this.state;
     const {waypoints} = this.state;
 
@@ -159,7 +158,6 @@ class Map extends React.Component {
       }
     })
     this.calcAndDisplayInfo();
-    console.log(this.state);
   }
 
   calcAndDisplayInfo(){
@@ -222,22 +220,23 @@ class Map extends React.Component {
     return (
       <div>
         <ul>{this.errors()}</ul>
-        <span>MAP DEMO</span>
-        <input className="name-route-input" onChange={this.update('name')} placeholder="Route name"/>
-        <button className={this.state.bike_ok ? 'active' : 'inactive'} onClick={this.toggleBikeOk}>Bike Friendly Route</button>
-        <button className={this.state.run_ok ? 'active' : 'inactive'} onClick={this.toggleRunOk}>Run Friendly Route</button>
-        <textarea className="notes-route-input" onChange={this.update('notes')} placeholder="Route notes"/>
-        <button onClick={this.handleSubmit}>Save Route</button>
-        <input id="pac-input" className="controls" type="text" placeholder="Search Box"/>
-        <button className="clear-button" onClick={() => location.reload()}>Reset</button>
-        <ul className="route-info-list">
-          <li>Distance: {Math.round(100 * distance / 1609.34) / 100} miles</li>
-          <li>Duration: {this.displayDuration()}</li>
-          <li>Elevation change:</li>
-        </ul>
-        <div className="route-type-btns">
-          <button value="BICYCLING" onClick={this.handleToggleTravel}>Bike</button>
-          <button value="WALKING" onClick={this.handleToggleTravel}>Run</button>
+        <div className="map-bar">
+          <input id="pac-input" className="controls" type="text" placeholder="Search Box"/>
+          <input className="name-route-input" onChange={this.update('name')} placeholder="Route name"/>
+          <button className={this.state.bike_ok ? 'active' : 'inactive'} onClick={this.toggleBikeOk}>Bike Friendly Route</button>
+          <button className={this.state.run_ok ? 'active' : 'inactive'} onClick={this.toggleRunOk}>Run Friendly Route</button>
+          <textarea className="notes-route-input" onChange={this.update('notes')} placeholder="Route notes"/>
+          <ul className="route-info-list">
+            <li>Distance: {Math.round(100 * distance / 1609.34) / 100} miles</li>
+            <li>Duration: {this.displayDuration()}</li>
+            <li>Elevation change:</li>
+          </ul>
+          <div className="route-type-btns">
+            <button value="BICYCLING" onClick={this.handleToggleTravel}>Bike</button>
+            <button value="WALKING" onClick={this.handleToggleTravel}>Run</button>
+          </div>
+          <button onClick={this.handleSubmit}>Save Route</button>
+          <button className="clear-button" onClick={() => location.reload()}>Reset</button>
         </div>
         <div id='map' ref='map'/>
         <div id="elevation_chart"></div>
