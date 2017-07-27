@@ -6,30 +6,46 @@ import SmallMap from './small_map';
 class RouteIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.handleDelete = this.handleDelete.bind(this);
-
+    this.displayDuration = this.displayDuration.bind(this);
   }
-  handleDelete(){
-    this.props.destroyRoute();
-    this.props.router.push('/home/routes');
+
+  displayDuration() {
+    let hsep = "";
+    let msep = "";
+    let ssep = "";
+    let sec = this.props.route.duration;
+    let hours = Math.floor(sec / 3600);
+    sec -= hours * 3600;
+    let minutes = Math.floor(sec / 60);
+    sec -= minutes * 60;
+    if (hours < 10) {hsep = "0" };
+    if (minutes < 10) {msep = "0" };
+    if (sec < 10) {ssep = "0" };
+    return `${hsep}${hours}:${msep}${minutes}:${ssep}${sec}`;
   }
 
   render() {
-    const { route, destroyRoute } = this.props;
+    const { route, destroyRoute } = this.props
+    console.log(this.props.route);
     return (
       // <span> { route.elevation_change } </span>
       <li className="route-feed-item">
         <Link to={`/home/routes/${route.id}`}>
           <SmallMap route={route}/>
-          <span className="route-name-index">{ route.name } </span>
+          <h5 className="route-name-index">{ route.name } </h5>
         </Link>
-          <span> Duration: { route.duration } </span>
-          <span> Distance: { route.distance } </span>
-          <span>Type: {route.travel_mode}</span>
-          {route.bike_ok ? <span> Bike Ok Route</span> : null}
-          {route.run_ok ? <span> Run Ok Route</span>: null}
-
-        <button onClick={this.handleDelete} className="delete-button">Delete</button>
+        <ul className="route-friendly-list">
+          {route.bike_ok ? <li> Bike Friendly</li> : null}
+          {route.run_ok ? <li> Run Friendly</li>: null}
+        </ul>
+          <span> Duration: { this.displayDuration() } </span>
+          <span> Distance: {
+              Math.round(100 * route.distance / 1609.34) / 100}
+             </span>
+          <span className="created-as-item">Created as a {
+              (route.travel_mode === "BICYCLING")
+               ? "cycling" : "running"
+             } route on { route.created_at.split("T")[0] }.</span>
       </li>
     );
   }

@@ -38,7 +38,6 @@ class WorkoutsFeed extends React.Component {
 
         <div className="workout-links">
           <Link to='/home/new_workout'><button className="new-workout-btn">Add a Workout</button></Link>
-          <Link to='/home/new_route'><button className="new-workout-btn">Add a route</button></Link>
         </div>
 
       </div>

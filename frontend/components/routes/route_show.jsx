@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ShowMap from './show_map'
 
 
 
@@ -7,6 +8,11 @@ class RouteShow extends React.Component {
   constructor(props){
     super(props);
     this.displayDuration = this.displayDuration.bind(this);
+  }
+
+  handleDelete(){
+    this.props.destroyRoute();
+    this.props.router.push('/home/routes');
   }
 
   displayDuration() {
@@ -33,6 +39,7 @@ class RouteShow extends React.Component {
     return (
     <div>
       <ul className="route-show">
+        <ShowMap route={route} />
         <li>Name: {route.name}</li>
         <li>Duration: {this.displayDuration()}</li>
         <li>Distance: {Math.round(100 * route.distance / 1609.34) / 100} miles</li>
@@ -40,6 +47,7 @@ class RouteShow extends React.Component {
         {route.bike_ok ? <li> Bike Ok Route</li> : null}
         {route.run_ok ? <li> Run Ok Route</li>: null}
         <li>Notes: {route.notes}</li>
+        <button onClick={this.handleDelete} className="delete-button">Delete</button>
       </ul>
     </div>
   );

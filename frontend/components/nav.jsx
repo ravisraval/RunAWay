@@ -25,7 +25,7 @@ class Nav extends React.Component{
       <div className="nav-bar">
         <ul className="left-nav">
           <li className ="logo">
-            <h3>RunAWay</h3>
+            <h3 className="logo-name">RunAWay</h3>
           </li>
           <li>
             <NavLink to='/home/workouts'><h4>Workouts</h4></NavLink>
