@@ -21,11 +21,6 @@ export const removeWorkout = workout => ({
   workout
 });
 
-export const receiveErrors = errors => ({
-  type: RECEIVE_ERRORS,
-  errors
-});
-
 export const fetchWorkouts = () => dispatch => (
   APIUtil.fetchWorkouts().then(workouts => (
     dispatch(receiveWorkouts(workouts))
