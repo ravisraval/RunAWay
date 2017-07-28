@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import ShowMap from './show_map'
 //try making this a modal
@@ -8,7 +9,6 @@ class RouteShow extends React.Component {
   constructor(props){
     super(props);
     this.displayDuration = this.displayDuration.bind(this);
-    this.scrollToBottom = this.scrollToBottom.bind(this);
   }
 
   displayDuration() {
@@ -28,13 +28,7 @@ class RouteShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchRoute(this.props.routeId);
-    this.scrollToBottom();
   }
-
-  scrollToBottom = () => {
-    const openedRoute = ReactDOM.findDOMNode("map-show");
-    openedRoute.scrollIntoView();
-};
 
   render() {
     const { route } = this.props;
