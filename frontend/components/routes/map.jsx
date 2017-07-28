@@ -61,15 +61,15 @@ class Map extends React.Component {
     this.listenforClick();
   }
 
-  errors() {
-    if (this.props.errors) {
-      return (
-        this.props.errors.map(error => {
-          return (<li className="error" key={error}>{error}</li>);
-        })
-      );
-    }
-  }
+  // errors() {
+  //   if (this.props.errors) {
+  //     return (
+  //       this.props.errors.map(error => {
+  //         return (<li className="error" key={error}>{error}</li>);
+  //       })
+  //     );
+  //   }
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -216,10 +216,10 @@ class Map extends React.Component {
    * we give it a 'ref' so we can easily get a pointer to the
    * actual dom node up in componentDidMount
    */
-<button class="bttn-jelly bttn-sm bttn-warning">small</button>
+  //  <ul>{this.errors()}</ul>
+// <button class="bttn-jelly bttn-sm bttn-warning">small</button>
     return (
       <div>
-        <ul>{this.errors()}</ul>
         <div className="map-bar">
           <input id="pac-input" className="controls" type="text" placeholder=""/>
           <p className="search-icon"></p>
@@ -230,12 +230,9 @@ class Map extends React.Component {
           <ul className="route-info-list">
             <li>Distance: {Math.round(100 * distance / 1609.34) / 100} miles</li>
             <li>Duration: {this.displayDuration()}</li>
-            <li>Elevation change:</li>
           </ul>
-          <div className="route-type-btns">
-            <button value="BICYCLING" className="session-link" onClick={this.handleToggleTravel}>Bike</button>
-            <button value="WALKING" className="session-link" onClick={this.handleToggleTravel}>Run</button>
-          </div>
+          <button value="BICYCLING" className="session-link" onClick={this.handleToggleTravel}>Generate Bike Ride</button>
+          <button value="WALKING" className="session-link" onClick={this.handleToggleTravel}>Generate Run</button>
           <button  className="session-link" onClick={this.handleSubmit}>Save Route</button>
           <button className="session-link" onClick={() => location.reload()}>Reset</button>
         </div>

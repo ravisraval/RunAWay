@@ -1,4 +1,12 @@
 .route-show {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
   position: relative;
   margin-bottom: 50px;
+  // text-align: center;
+}
+
+.show-text {
+  text-align: center;
 }

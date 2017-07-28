@@ -12,7 +12,6 @@ class NewRoute extends React.Component {
     return(
       <div className="new-route-page">
         <div className="route-builder">
-          <h1>Build A Route</h1>
           <MapContainer center={startingMapCenter}/>,
         </div>
       </div>

@@ -36,17 +36,17 @@ class SignupForm extends React.Component {
     if (newProps.loggedIn) {this.props.history.push('/home/workouts')};
   }
 
-  renderErrors(){
-		return(
-			<ul>
-				{this.props.errors.map( (error, i) => (
-					<li key={`error-${i}`}>
-						{error}
-					</li>
-				))}
-			</ul>
-		);
-	}
+  // renderErrors(){
+	// 	return(
+	// 		<ul>
+	// 			{this.props.errors.map( (error, i) => (
+	// 				<li key={`error-${i}`}>
+	// 					{error}
+	// 				</li>
+	// 			))}
+	// 		</ul>
+	// 	);
+	// }
 
   render() {
     return (
