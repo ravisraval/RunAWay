@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { Route } from 'react-router';
 import RouteIndexItemContainer from './route_index_item_container';
 import RouteShowContainer from './route_show_container';
 import Modal from '../modal';
@@ -10,6 +11,7 @@ class RoutesIndex extends React.Component {
     this.state = {
       isModalOpen: false
     };
+    this.openModal = this.openModal.bind(this);
   }
 
   openModal() {
@@ -39,8 +41,7 @@ class RoutesIndex extends React.Component {
     return (
       <div className="full-page-component">
         <Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
-          console.log(match.params);
-          <RouteShowContainer/>
+          <Route path="/home/routes/:routeId" component={RouteShowContainer}/>
         </Modal>
         <h1 className="page-header">Your Routes</h1>
         <ul className="routes-list">
