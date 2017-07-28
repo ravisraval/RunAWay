@@ -13,8 +13,16 @@
   vertical-align: middle;
   white-space: pre-wrap;
 
+  textarea {
+    outline:none;
+    border: 0;
+    border-left: 2px solid slategrey;
+  }
+
   input {
-    border: 1px solid slategray;
+    border: 0px solid slategray;
+    outline: none;
+
   }
 
   button {

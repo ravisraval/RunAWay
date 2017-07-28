@@ -24,6 +24,7 @@ const redirectIfLoggedIn = (nextState, replace) => {
     replace('/home/workouts');
   }
   // <Route exact path="/home/routes/:routeId/edit" component={RouteEditContainer}/>
+  // <Route exact path="/home/routes/:routeId" component={RouteShowContainer}/> pass this in to routes index via index item, using match.params.routeid
 }
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -39,7 +40,6 @@ const Root = ({ store }) => (
         <Route path="/home/routes" component={RouteIndexContainer}/>
         <Route exact path="/home/new_route" component={NewRouteContainer}/>
         <Route exact path="/home/stats" component={StatsContainer}/>
-        <Route exact path="/home/routes/:routeId" component={RouteShowContainer}/>
 
         <Footer/>
       </div>

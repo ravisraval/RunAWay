@@ -20,6 +20,7 @@
 
 ### Workouts
 all require logged in user
+
 - `GET /api/workouts` - index of current user's workouts
 - `POST /api/workouts` - create workout
 - `GET /api/workouts/:id`- specific workout show page

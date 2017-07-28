@@ -1,12 +1,23 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import RouteIndexItemContainer from './route_index_item_container';
+import RouteShowContainer from './route_show_container';
 import Modal from '../modal';
 
 class RoutesIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isModalOpen: false
+    };
+  }
 
+  openModal() {
+    this.setState({ isModalOpen: true })
+  }
+
+  closeModal() {
+    this.setState({ isModalOpen: false })
   }
 
   componentDidMount() {
@@ -19,11 +30,18 @@ class RoutesIndex extends React.Component {
     const routeItems = routes.sort().map(route => (
         <RouteIndexItemContainer
           key={ route.id }
-          route={ route }/>
+          route={ route }
+          openModal={this.openModal}
+          closeModal={this.closeModal}
+          />
       )
     );
     return (
       <div className="full-page-component">
+        <Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
+          console.log(match.params);
+          <RouteShowContainer/>
+        </Modal>
         <h1 className="page-header">Your Routes</h1>
         <ul className="routes-list">
           {routeItems}

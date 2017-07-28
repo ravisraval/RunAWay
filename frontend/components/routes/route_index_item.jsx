@@ -8,6 +8,8 @@ class RouteIndexItem extends React.Component {
     super(props);
     this.displayDuration = this.displayDuration.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    console.log("below is props");
+    console.log(this.props);
   }
 
   handleDelete(){
@@ -35,7 +37,7 @@ class RouteIndexItem extends React.Component {
     return (
       // <span> { route.elevation_change } </span>
       <li className="route-feed-item">
-        <Link to={`/home/routes/${route.id}`}>
+        <Link onClick={this.openModal} to={`/home/routes/${route.id}`}>
           <SmallMap route={route}/>
           <h5 className="route-name-index">{ route.name } </h5>
         </Link>

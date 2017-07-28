@@ -33,7 +33,7 @@
 }
 .signup-submit-button {
   background: rgba(255,255,255,.5);
-  width: 120px;
+  width: 140px;
   margin: 15px auto;
   padding: 10px;
   color: black;
@@ -44,14 +44,12 @@
   transition: .75s;
   background: rgba(200,200,200,.5);
   outline: none;
-
 }
 
 .signup-submit-button:active {
   outline: none;
-  transform: translate(0, 1px);
+  transform: translate(0, 2px);
 }
-
 
 .signup-form {
   display: flex;

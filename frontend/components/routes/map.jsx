@@ -232,7 +232,7 @@ class Map extends React.Component {
 
         // Draw the chart using the data within its DIV.
         chart.draw(data, {
-          height: 150,
+          height: 120,
           legend: 'none',
           titleY: 'Elevation (m)'
         });
@@ -267,9 +267,9 @@ class Map extends React.Component {
     return (
       <div>
         <div className="map-bar">
-          <input id="pac-input" className="controls" type="text" placeholder=""/>
+          <input id="pac-input" className="controls" type="text" placeholder="       Search here"/>
           <p className="search-icon"></p>
-          <input className="name-route-input" onChange={this.update('name')} placeholder="Route name"/>
+          <input className="name-route-input" onChange={this.update('name')} placeholder="Type route name here"/>
           <textarea className="notes-route-input" onChange={this.update('notes')} placeholder="Route notes"/>
           <button className={this.state.bike_ok ? "active" : 'inactive'} onClick={this.toggleBikeOk}>Bike Friendly Route</button>
           <button className={this.state.run_ok ? 'active' : 'inactive'} onClick={this.toggleRunOk}>Run Friendly Route</button>
@@ -277,8 +277,8 @@ class Map extends React.Component {
             <li>Distance: {Math.round(100 * distance / 1609.34) / 100} miles</li>
             <li>Duration: {this.displayDuration()}</li>
           </ul>
-          <button value="BICYCLING" className="session-link" onClick={this.handleToggleTravel}>Generate Bike Ride</button>
-          <button value="WALKING" className="session-link" onClick={this.handleToggleTravel}>Generate Run</button>
+          <button value="BICYCLING" className="session-link" onClick={this.handleToggleTravel}>Render as Bike Ride</button>
+          <button value="WALKING" className="session-link" onClick={this.handleToggleTravel}>Render as Run</button>
           <button  className="session-link" onClick={this.handleSubmit}>Save Route</button>
           <button className="session-link" onClick={() => location.reload()}>Reset</button>
         </div>

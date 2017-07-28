@@ -29,7 +29,7 @@ class Landing extends React.Component{
         <div className="spacer">
         <button className="session-link-sign-up" onClick={() => this.openModal()}><h3>Sign Up</h3></button>
 
-        <LandingHeaderContainer/>
+        <LandingHeaderContainer />
         <Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
           <SignupFormContainer/>
         </Modal>
