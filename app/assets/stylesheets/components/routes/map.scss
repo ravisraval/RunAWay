@@ -14,10 +14,85 @@
 
 .map-bar {
   display: flex;
-  // justify-content: space-around;
-  max-height: 40px;
-  padding-bottom:5px;
+  justify-content: space-around;
+  height: 50px;
+  margin-bottom:35px;
+  align-items: center;
+
+  input {
+    border: 1px solid slategray;
+  }
+
+  button {
+    height: 50px;
+    width: 60px;
+    color: black;
+    font-weight: lighter;
+    font-size: 12px;
+    border: 1px gray solid;
+    border-radius: 1px;
+    outline: none;
+    margin: 5px 10px;
+    padding: 7px;
+    transition: .7s
+  }
+
+  button.inactive {
+    background: red;
+  }
+
+  button.active {
+    background: green;
+  }
+
+  button:hover {
+    color: black;
+    background-color: #d65353;
+
+  }
 }
+
+
+
+
+
+#pac-input {
+  position: absolute;
+  z-index: 100000;
+  top: 118px;
+  left: 120px;
+  border: none;
+  border-radius: 1px;
+  padding: 3px;
+}
+
+input#pac-input:focus {
+    z-index: 100005;
+}
+
+.search-icon {
+
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-image: url("http://res.cloudinary.com/runaway-today/image/upload/v1501240394/magnifying-glass_1_cp3a2t.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: absolute;
+  z-index: 100001;
+  top: 108px;
+  left: 123px;
+}
+
+
+
+
+
+
+
+
 
 .small-map {
   height: 175px;

@@ -1,5 +1,3 @@
-***********************************Developmental ReadMe**************************
-
 link other doc files in here somewhere
 
 Heroku Link: http://www.runaway.today
@@ -45,11 +43,13 @@ Phase 3: Routes (3 days)
 
 Objective: Routes can be created (google maps API), read, and destroyed.
 
-Phase 4: Stats, Profile (2 days)
+Phase 4: Stats (2 days)
 
-Objective: User profile can be read and updated. Detailed stats can be read.
+Objective: Detailed stats can be read.
 
 Bonus Features (TBD)
+ Route Elevation Path
+ Global Stats
  Edit Routes
  Friends / social networking
  Calendar
