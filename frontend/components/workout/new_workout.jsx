@@ -5,7 +5,7 @@ class NewWorkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      route_id: null,
+      route_id: '',
       title: '',
       notes: '',
       distance: '',
@@ -52,8 +52,8 @@ class NewWorkout extends React.Component {
  handleRouteSelect(e) {
    return e => {
      this.setState({
-     route_id: e.currentTarget.value.id,
-     distance: e.currentTarget.value.distance
+     route_id: e.target.value.id,
+     distance: e.target.value.distance
    });
  }
  }
@@ -92,6 +92,7 @@ class NewWorkout extends React.Component {
               <div>
               <p><input
                 type="number"
+                id="distance"
                 value={this.state.distance}
                 placeholder="0"
                 onChange={this.update('distance')}
@@ -133,6 +134,7 @@ class NewWorkout extends React.Component {
               <div>
                 <p><input
                   type="number"
+                  id="elevation"
                   value={this.state.elevation_change}
                   placeholder="0"
                   onChange={this.update('elevation_change')}

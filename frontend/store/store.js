@@ -9,7 +9,7 @@ const initialState = {
 }
 
 const configureStore = (preloadedState = initialState) => (
-  createStore(RootReducer, preloadedState, applyMiddleware(thunk, logger))
+  createStore(RootReducer, preloadedState, applyMiddleware(thunk))
 );
 
 export default configureStore;

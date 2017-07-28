@@ -4,6 +4,7 @@ export const RECEIVE_ROUTES = 'RECEIVE_ROUTES';
 export const RECEIVE_ROUTE = 'RECEIVE_ROUTE';
 export const RECEIVE_REVIEW = 'RECEIVE_REVIEW';
 export const REMOVE_ROUTE = "REMOVE_ROUTE";
+export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 // export const REQUEST_ROUTE = 'REQUEST_ROUTE';
 
 export const receiveRoutes = routes => ({
@@ -19,6 +20,11 @@ export const receiveRoute = route => ({
 export const removeRoute = route => ({
   type: REMOVE_ROUTE,
   route
+});
+
+export const receiveErrors = errors => ({
+  type: RECEIVE_ERRORS,
+  errors
 });
 
 export const fetchRoutes = () => dispatch => (

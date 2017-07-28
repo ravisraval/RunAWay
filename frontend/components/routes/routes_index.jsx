@@ -40,7 +40,7 @@ class RoutesIndex extends React.Component {
     );
     return (
       <div className="full-page-component">
-        <Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
+        <Modal className="route-modal" isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
           <Route path="/home/routes/:routeId" component={RouteShowContainer}/>
         </Modal>
         <h1 className="page-header">Your Routes</h1>

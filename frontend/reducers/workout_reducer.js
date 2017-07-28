@@ -19,6 +19,11 @@ const WorkoutReducer = (state = {}, action) => {
     case REMOVE_WORKOUT:
       delete newState[action.workout.id];
       return newState;
+    // case RECEIVE_ERRORS:
+    //   const errors = action.errors;
+    //   return merge({}, {
+    //     errors
+    //   });
     default:
       return state;
   }

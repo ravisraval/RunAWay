@@ -30,23 +30,22 @@ class RouteShow extends React.Component {
     this.props.fetchRoute(this.props.routeId);
   }
 
+  // <ul className="route-show">
+  //   <div className="show-text">
+  //     <li>Name: {route.name}</li>
+  //     <li>Duration: {this.displayDuration()}</li>
+  //     <li>Distance: {Math.round(100 * route.distance / 1609.34) / 100} miles</li>
+  //     <li>Type: {route.travel_mode}</li>
+  //     {route.bike_ok ? <li> Bike Ok Route</li> : null}
+  //     {route.run_ok ? <li> Run Ok Route</li>: null}
+  //     <li>Notes: {route.notes}</li>
+  //   </div>
+  // </ul>
   render() {
     const { route } = this.props;
-    // <li>Elevation change: {route.elevation_change}</li>
     return (
-    <div ref="map-show">
+    <div ref="map-show" className="route-show-wrap">
       <ShowMap route={route} />
-      <ul className="route-show">
-        <div className="show-text">
-          <li>Name: {route.name}</li>
-          <li>Duration: {this.displayDuration()}</li>
-          <li>Distance: {Math.round(100 * route.distance / 1609.34) / 100} miles</li>
-          <li>Type: {route.travel_mode}</li>
-          {route.bike_ok ? <li> Bike Ok Route</li> : null}
-          {route.run_ok ? <li> Run Ok Route</li>: null}
-          <li>Notes: {route.notes}</li>
-        </div>
-      </ul>
     </div>
   );
 };

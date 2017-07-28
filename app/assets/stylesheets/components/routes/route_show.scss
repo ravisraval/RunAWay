@@ -1,9 +1,31 @@
+.route-modal {
+  width:100vh;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  // position:relative;
+  border-radius: 2px;
+  // background:transparentize(white, .25);
+  text-align:center;
+}
+
+.show-map {
+  height:90vh;
+  width:160vh;
+}
+.route-show-wrap {
+  width:160vh;
+  margin-left: 20%;
+  margin-top: 35%;
+}
+
 .route-show {
   display: flex;
   flex-direction: column;
   align-content: center;
-  position: relative;
-  margin-bottom: 50px;
+  position: relative;;
   // text-align: center;
 }
 
