@@ -2,3 +2,26 @@
   // position: relative;
   // top: 90px;
 }
+
+.personal-stats-list {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.separated-stats {
+  display: flex;
+  flex-direction: row;
+}
+
+.cycling-stats {
+  display: flex;
+  flex-flow: column;
+}
+
+.running-stats {
+  display: flex;
+  flex-flow: column;
+}
