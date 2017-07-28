@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router-dom'
 
+
 //make start marker green flag, end checkered
 class Map extends React.Component {
   constructor(props) {
@@ -189,8 +190,53 @@ class Map extends React.Component {
 
   displayElevation() {
     // Create an ElevationService.
+    google.load('visualization', '1', {packages: ['columnchart']});
     let elevator = new google.maps.ElevationService;
-    let path = this.state.waypoints.map((waypoint) => waypoint.location)
+    let path = this.state.waypoints.map((waypoint) => waypoint.location);
+    displayPathElevation(path, elevator, this.map);
+    function displayPathElevation(path, elevator, map) {
+        // Display a polyline of the elevation path.
+        // new google.maps.Polyline({
+        //   path: path,
+        //   strokeColor: '#0000CC',
+        //   strokeOpacity: 0.4,
+        //   map: map
+        // });
+        elevator.getElevationAlongPath({
+          'path': path,
+          'samples': 256
+        }, plotElevation);
+      }
+
+      function plotElevation(elevations, status) {
+        var chartDiv = document.getElementById('elevation_chart');
+        if (status !== 'OK') {
+          // Show the error code inside the chartDiv.
+          chartDiv.innerHTML = 'Cannot show elevation: request failed because ' +
+              status;
+          return;
+        }
+        // Create a new chart in the elevation_chart DIV.
+        var chart = new google.visualization.ColumnChart(chartDiv);
+
+        // Extract the data from which to populate the chart.
+        // Because the samples are equidistant, the 'Sample'
+        // column here does double duty as distance along the
+        // X axis.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Sample');
+        data.addColumn('number', 'Elevation');
+        for (var i = 0; i < elevations.length; i++) {
+          data.addRow(['', elevations[i].elevation]);
+        }
+
+        // Draw the chart using the data within its DIV.
+        chart.draw(data, {
+          height: 150,
+          legend: 'none',
+          titleY: 'Elevation (m)'
+        });
+      }
   }
 
   displayDuration() {
