@@ -15,19 +15,18 @@ ul.landing-header-list {
 
 
   .session-link {
-    height:40px;
-    width: 100px;
-    background: transparent;
-    transition: .6s;
+    // height:40px;
+    // width: 100px;
+    // background: transparent;
+    // transition: .6s;
   }
 
   ul {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-items: center;
     list-style: none;
     font-size: 18px;
-    justify-content: space-around;
     text-align: center;
     width: 100%;
     li {
@@ -47,21 +46,18 @@ ul.landing-header-list {
 
     }
   }
-
 }
 
 .login-form-list {
-
-
   li:last-of-type {
     margin-left: 15px;
   }
-
 }
 
 .login-form {
   display: flex;
   align-items: center;
+  margin-left: 370px;
 }
 
 .demo-login {

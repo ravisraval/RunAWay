@@ -14,9 +14,11 @@ class NewWorkout extends React.Component {
       minutes: '',
       hours: '',
       biked: null,
+      route: null,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRadio = this.handleRadio.bind(this);
+    this.handleRouteSelect = this.handleRouteSelect.bind(this);
   }
   componentDidMount() {
     this.props.fetchRoutes();
@@ -45,6 +47,15 @@ class NewWorkout extends React.Component {
   handleRadio(event) {
    const biked = event.currentTarget.value === 'true' ? true: false;
    this.setState({ biked });
+ }
+
+ handleRouteSelect(e) {
+   return e => {
+     this.setState({
+     route_id: e.currentTarget.value.id,
+     distance: e.currentTarget.value.distance
+   });
+ }
  }
 
   render() {
@@ -166,11 +177,11 @@ class NewWorkout extends React.Component {
             <label><h3>Add a Route</h3>
 
               <select className="workout-input"
-                value={this.state.route_id}
-                onChange={this.update('route_id')}>
-                <option selected="selected" disabled="true" value="">Select Premade Route (optional)</option>
+                value={this.state.route}
+                onChange={this.handleRouteSelect}>
+                <option selected="selected" value="null">Select Premade Route (optional)</option>
                 {routes.map((route) => {
-                  return <option value={route.id} key={route.id}>{route.name}</option>;
+                  return <option value={route} key={route.id}>{route.name}</option>;
                   })}
               </select>
 

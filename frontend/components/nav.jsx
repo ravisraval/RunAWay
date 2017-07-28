@@ -38,9 +38,8 @@ class Nav extends React.Component{
           </li>
         </ul>
         <ul className="right-nav">
-          <li>
-            <NavLink to='/home/profile'><button
-              className="session-link">{this.props.username + "'s Profile"}</button></NavLink>
+          <li className="user-prof">
+            {this.props.username + "'s Profile"}
           </li>
           <li>
             <button className="session-link" onClick={this.handleLogout}>Logout</button>

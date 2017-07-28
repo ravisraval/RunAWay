@@ -22,23 +22,20 @@ class Landing extends React.Component{
   }
 
   render() {
+    // </div>
     return (
       <div className='landing-content-wrapper'>
         <div className='landing-content'>
-        <div className="wrap">
-
-          <div className="circle angled"><button className="clicker" onClick={() => this.openModal()}><h3>Make your way</h3></button></div>
-        </div>
+        <div className="spacer">
+        <button className="session-link-sign-up" onClick={() => this.openModal()}><h3>Sign Up</h3></button>
 
         <LandingHeaderContainer/>
         <Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
           <SignupFormContainer/>
         </Modal>
-
-
-
-        </div>
       </div>
+      </div>
+    </div>
     );
   }
 };

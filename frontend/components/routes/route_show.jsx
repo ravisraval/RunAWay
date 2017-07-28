@@ -1,18 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ShowMap from './show_map'
-
+//try making this a modal
 
 
 class RouteShow extends React.Component {
   constructor(props){
     super(props);
     this.displayDuration = this.displayDuration.bind(this);
-  }
-
-  handleDelete(){
-    this.props.destroyRoute();
-    this.props.router.push('/home/routes');
+    this.scrollToBottom = this.scrollToBottom.bind(this);
   }
 
   displayDuration() {
@@ -32,12 +28,19 @@ class RouteShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchRoute(this.props.routeId);
+    this.scrollToBottom();
   }
+
+  scrollToBottom = () => {
+    const openedRoute = ReactDOM.findDOMNode("map-show");
+    openedRoute.scrollIntoView();
+};
+
   render() {
     const { route } = this.props;
     // <li>Elevation change: {route.elevation_change}</li>
     return (
-    <div>
+    <div ref="map-show">
       <ul className="route-show">
         <ShowMap route={route} />
         <li>Name: {route.name}</li>
@@ -47,7 +50,6 @@ class RouteShow extends React.Component {
         {route.bike_ok ? <li> Bike Ok Route</li> : null}
         {route.run_ok ? <li> Run Ok Route</li>: null}
         <li>Notes: {route.notes}</li>
-        <button onClick={this.handleDelete} className="delete-button">Delete</button>
       </ul>
     </div>
   );

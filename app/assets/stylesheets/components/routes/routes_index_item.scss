@@ -7,6 +7,32 @@
   background-color: #f7f7f7
 }
 
+.delete-route {
+  background-color: white;
+  position:relative;
+  left: 186px;
+  bottom: 35px;
+  width: 60px;
+
+  color: black;
+  font-weight: lighter;
+  font-size: 12px;
+
+  border: 1px gray solid;
+  border-radius: 1px;
+  outline: none;
+
+  margin: 5px 10px;
+  padding: 7px;
+  transition: .7s
+
+}
+
+.delete-route:hover {
+  color: black;
+  background-color: #d65353;
+
+}
 
 .route-name-index {
   margin: 7px 3px;
@@ -34,5 +60,4 @@
   font-size: 13px;
   background-color: #F0F0F0;
   position: relative;
-  top: 47px;
-}
+  top: 2px;}

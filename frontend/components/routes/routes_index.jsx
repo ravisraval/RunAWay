@@ -6,27 +6,17 @@ import Modal from '../modal';
 class RoutesIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isModalOpen: false
-    };
+
   }
 
   componentDidMount() {
     this.props.fetchRoutes();
   }
 
-  openModal() {
-    this.setState({ isModalOpen: true })
-  }
-
-  closeModal() {
-    this.setState({ isModalOpen: false })
-  }
-
   render() {
     const {routes} = this.props;
     if (!routes) {return null};
-    const routeItems = this.props.routes.reverse().map(route => (
+    const routeItems = routes.sort().map(route => (
         <RouteIndexItemContainer
           key={ route.id }
           route={ route }/>

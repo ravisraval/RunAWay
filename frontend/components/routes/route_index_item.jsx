@@ -7,6 +7,12 @@ class RouteIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.displayDuration = this.displayDuration.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete(){
+    this.props.destroyRoute();
+    this.props.router.push('/home/routes');
   }
 
   displayDuration() {
@@ -26,7 +32,6 @@ class RouteIndexItem extends React.Component {
 
   render() {
     const { route, destroyRoute } = this.props
-    console.log(this.props.route);
     return (
       // <span> { route.elevation_change } </span>
       <li className="route-feed-item">
@@ -38,10 +43,11 @@ class RouteIndexItem extends React.Component {
           {route.bike_ok ? <li> Bike Friendly</li> : null}
           {route.run_ok ? <li> Run Friendly</li>: null}
         </ul>
-          <span> Duration: { this.displayDuration() } </span>
+          <span> Duration: { this.displayDuration() }</span>
           <span> Distance: {
-              Math.round(100 * route.distance / 1609.34) / 100}
+              Math.round(100 * route.distance / 1609.34) / 100} m
              </span>
+         <button onClick={this.handleDelete} className="delete-button" className="delete-route">Delete</button>
           <span className="created-as-item">Created as a {
               (route.travel_mode === "BICYCLING")
                ? "cycling" : "running"
