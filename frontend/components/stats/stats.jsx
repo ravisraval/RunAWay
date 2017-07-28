@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { Chart } from 'react-google-charts';
 
 
 class Stats extends React.Component {
@@ -41,81 +42,146 @@ class Stats extends React.Component {
     let totalRunningDuration = 0;
     let longestRun = 0;
     let farthestRun = 0;
+
     workouts.forEach(workout => {
-      totalDuration += workout.duration;
-      totalDistance += workout.distance;
+      totalDuration += workout.duration_seconds;
+      totalDistance += parseFloat(workout.distance);
       if (workout.biked) {
         totalRides += 1;
-        totalCyclingDuration += workout.duration;
-        totalCyclingDistance += workout.distance;
-        if (workout.duration > longestRide) {
-          longestRide = workout.duration;
+        totalCyclingDuration += workout.duration_seconds;
+        totalCyclingDistance += parseFloat(workout.distance);
+        if (workout.duration_seconds > longestRide) {
+          longestRide = workout.duration_seconds;
         }
-        if (workout.distance > farthestRide) {
-          farthestRide = workout.duration;
+        if (parseFloat(workout.distance) > farthestRide) {
+          farthestRide = parseFloat(workout.distance);
         }
       } else {
         totalRuns += 1;
-        totalRunningDuration += workout.duration;
-        totalRunningDistance += workout.distance;
-        if (workout.duration > longestRun) {
-          longestRun = workout.duration;
+        totalRunningDuration += workout.duration_seconds;
+        totalRunningDistance += parseFloat(workout.distance);
+        if (workout.duration_seconds > longestRun) {
+          longestRun = workout.duration_seconds;
         }
-        if (workout.distance > farthestRun) {
-          farthestRun = workout.duration;
+        if (parseFloat(workout.distance) > farthestRun) {
+          farthestRun = parseFloat(workout.distance);
         }
       }
     });
 
+    const totalDisData = [
+      ['', 'Running', 'Cycling'],
+      ['', totalRunningDistance, totalCyclingDistance]];
+
+    const totalDurData = [
+      ['', 'Running', 'Cycling'],
+      ['', totalRunningDuration/3600, totalCyclingDuration/3600]];
+
+    const totalWorkoutsData = [
+      ['', 'Running', 'Cycling'],
+      ['', totalRuns, totalRides]];
+
+    const longestWorkoutData = [
+      ['', 'Running', 'Cycling'],
+      ['', longestRun/60, longestRide/60]];
+
+    const farthestWorkoutData = [
+      ['', 'Running', 'Cycling'],
+      ['', farthestRun, farthestRide]];
+
+    const averageSpeedData = [
+      ['', 'Running', 'Cycling'],
+      ['',
+        totalRunningDistance/(totalRunningDuration/3600),
+       totalCyclingDistance/(totalCyclingDuration/3600)]];
+
     return(
       <div className="stats-page" className="full-page-component">
         <h1 className="page-header">Statistics for {this.props.username}</h1>
-        <div className="personal-stats">
-          <div className="personal-stats-list">
-            <h3 className="combined-stats">Combined Cycling & Running Totals</h3>
-              <span>Workouts: {workouts.length}</span>
-              <span>Distance Traveled: {totalDistance}</span>
-              <span>Duration: {this.displayDuration(totalDuration)}</span>
-            <div className="separated-stats">
-              <div className="cycling-stats">
-                <h3>Cycling Totals</h3>
-                <span>Workouts: {totalRides}</span>
-                <span>Distance Traveled: {totalCyclingDistance}</span>
-                <span>Duration: {totalCyclingDuration}</span>
-                <span>Longest ride:{longestRide}</span>
-                <span>Farthest ride:{farthestRide}</span>
-              </div>
-              <div className="running-stats">
-                <h3>Running Totals</h3>
-                <span>Workouts: {totalRuns}</span>
-                <span>Distance Traveled: {totalRunningDistance}</span>
-                <span>Duration: {totalRunningDuration}</span>
-                <span>Longest run:{longestRun}</span>
-                <span>Farthest run:{farthestRun}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="global-stats">
-          <h2>Global Stats</h2>
-          <div className="global-stats-list">
-            <h3>Combined Cycling & Running Totals</h3>
-              <span>Workouts: </span>
-              <span>Distance Traveled: </span>
-              <span>Duration: </span>
-            <h3>Cycling Totals</h3>
-              <span>Workouts: </span>
-              <span>Distance Traveled: </span>
-              <span>Duration: </span>
-              <span>Longest ride:</span>
-              <span>Farthest ride:</span>
-            <h3>Running Totals</h3>
-              <span>Workouts: </span>
-              <span>Distance Traveled: </span>
-              <span>Duration: </span>
-              <span>Longest run:</span>
-              <span>Farthest ride:</span>
-          </div>
+        <div className='stats-charts-container'>
+
+          <Chart className="chart"
+            chartType="BarChart"
+            data={totalWorkoutsData}
+            options={{
+              title: 'Workout Distribution',
+              animation: { "startup": true, easing:'inAndOut', duration: 3},
+              titleTextStyle: { color: "#686868", fontSize: 18}
+            }}
+            graph_id="TotalWorkouts"
+            width="100vh"
+            height="230px"
+            legend_toggle
+            />
+
+          <Chart className="chart"
+            chartType="BarChart"
+            data={totalDisData}
+            options={{
+              title: 'Total Distance (miles)',
+              subtitle: 'Miles',
+              animation: { "startup": false, easing:'inAndOut', duration: 6},
+              titleTextStyle: { color: "#686868", fontSize: 18}
+            }}
+            graph_id="TotalDistanceChart"
+            width="100vh"
+            height="230px"
+            legend_toggle
+          />
+
+        <Chart className="chart"
+            chartType="BarChart"
+            data={totalDurData}
+            options={{
+              title: 'Total Duration (hours)',
+              animation: { "startup": true, easing:'inAndOut', duration: 3},
+              titleTextStyle: { color: "#686868", fontSize: 18}
+            }}
+            graph_id="DurationChart"
+            width="100vh"
+            height="230px"
+            legend_toggle
+          />
+
+        <Chart className="chart"
+            chartType="BarChart"
+            data={longestWorkoutData}
+            options={{title: 'Longest Workout (minutes)',
+              animation: { "startup": true, easing:'inAndOut', duration: 6},
+              titleTextStyle: { color: "#686868", fontSize: 18}
+            }}
+            graph_id="LongestWorkouts"
+            height="230px"
+            width="100vh"
+            legend_toggle
+          />
+
+        <Chart className="chart"
+            chartType="BarChart"
+            data={farthestWorkoutData}
+            options={{title: 'Farthest Workout (miles)',
+              animation: { "startup": true, easing:'inAndOut', duration: 3},
+              titleTextStyle: { color: "#686868", fontSize: 18}
+            }}
+            graph_id="FarthestWorkouts"
+            width="100vh"
+            height="230px"
+            legend_toggle
+          />
+
+        <Chart className="chart"
+            chartType="BarChart"
+            data={averageSpeedData}
+            options={{title: 'Average Speed (mph)',
+              animation: { "startup": true, easing:'inAndOut', duration: 3},
+              titleTextStyle: { color: "#686868", fontSize: 18}
+            }}
+            graph_id="AverageSpeed"
+            width="100vh"
+            height="230px"
+            legend_toggle
+          />
+
         </div>
       </div>
     );

@@ -3,25 +3,12 @@
   // top: 90px;
 }
 
-.personal-stats-list {
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-
-
-.separated-stats {
+.stats-charts-container {
   display: flex;
+
   flex-direction: row;
-}
+  flex-wrap: wrap;
+  justify-content: space-between;
 
-.cycling-stats {
-  display: flex;
-  flex-flow: column;
-}
-
-.running-stats {
-  display: flex;
-  flex-flow: column;
 }
