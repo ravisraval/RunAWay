@@ -8,8 +8,18 @@ class ShowMap extends React.Component {
     console.log(this.props);
     this.state = {
       latLngs: google.maps.geometry.encoding.decodePath(
-        this.props.route.waypoints_text)
+        this.props.route.waypoints_text),
+      isModalOpen: false
     };
+    this.openModal = this.openModal.bind(this);
+  }
+  
+  openModal() {
+    this.setState({ isModalOpen: true })
+  }
+
+  closeModal() {
+    this.setState({ isModalOpen: false })
   }
 
   componentDidMount() {
