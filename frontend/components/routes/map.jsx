@@ -189,7 +189,6 @@ class Map extends React.Component {
   }
 
   displayElevation() {
-    // Create an ElevationService.
     google.load('visualization', '1', {packages: ['columnchart']});
     let elevator = new google.maps.ElevationService;
     let path = this.state.waypoints.map((waypoint) => waypoint.location);
@@ -211,7 +210,6 @@ class Map extends React.Component {
       function plotElevation(elevations, status) {
         var chartDiv = document.getElementById('elevation_chart');
         if (status !== 'OK') {
-          // Show the error code inside the chartDiv.
           chartDiv.innerHTML = 'Cannot show elevation: request failed because ' +
               status;
           return;
@@ -267,9 +265,9 @@ class Map extends React.Component {
     return (
       <div>
         <div className="map-bar">
-          <input id="pac-input" className="controls" type="text" placeholder="       Search here"/>
+          <input id="pac-input" className="controls" type="text" placeholder="       Search here" autocomplete="on"/>
           <p className="search-icon"></p>
-          <input className="name-route-input" onChange={this.update('name')} placeholder="Type route name here"/>
+          <input className="name-route-input" onChange={this.update('name')} placeholder="Route name - required"/>
           <textarea className="notes-route-input" onChange={this.update('notes')} placeholder="Route notes"/>
           <button className={this.state.bike_ok ? "active" : 'inactive'} onClick={this.toggleBikeOk}>Bike Friendly Route</button>
           <button className={this.state.run_ok ? 'active' : 'inactive'} onClick={this.toggleRunOk}>Run Friendly Route</button>
