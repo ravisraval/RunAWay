@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { login } from '../../actions/session_actions';
+import { login, receiveErrors } from '../../actions/session_actions';
 import LandingHeader from './landing_header';
 
 const mapStateToProps = ({session}) => ({
@@ -8,7 +8,8 @@ const mapStateToProps = ({session}) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  login: user => dispatch(login(user))
+  login: user => dispatch(login(user)),
+  resetErrors: () => dispatch(receiveErrors([]))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingHeader);

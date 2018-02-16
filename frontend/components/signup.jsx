@@ -35,12 +35,11 @@ class SignupForm extends React.Component {
   componentWillReceiveProps(newProps) {
     if (newProps.loggedIn) {
       this.props.resetErrors();
-      this.props.history.push('/home/workouts')
-    };
+      this.props.history.push('/home/workouts');
+    }
   }
 
   renderErrors(){
-    console.log('rendering eror', this.props);
 		return(
 			<ul>
 				{this.props.errors.map( (error, i) => (

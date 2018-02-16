@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-
-
-
 class LandingHeader extends React.Component{
   constructor(props) {
     super(props);
@@ -41,20 +38,25 @@ class LandingHeader extends React.Component{
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.loggedIn) {this.props.history.push('/home/workouts')};
+    // TODO: deal with not being logged out properly?
+    if (newProps.loggedIn) {
+      // this.props.resetErrors();
+      this.props.history.push('/home/workouts');
+    };
   }
 
-  // renderErrors(){
-  //   return(
-  //     <ul>
-  //       {this.props.errors.map( (error, i) => (
-  //         <li key={`error-${i}`}>
-  //           {error}
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   );
-  // }
+  renderErrors(){
+    console.log(this.props);
+    return(
+      <ul>
+        {this.props.errors.map( (error, i) => (
+          <li key={`error-${i}`} className="login-errors">
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
 
   render() {
 
@@ -66,25 +68,25 @@ class LandingHeader extends React.Component{
           </li>
           <li>
             <ul className="login-form-list">
-            <form onSubmit={this.handleSubmit} className="login-form">
+              <label>{ this.renderErrors() }</label>
+              <form onSubmit={this.handleSubmit} className="login-form">
                 <li>
-
-                <input type="text" placeholder="Username"
-                   value={this.state.username}
-                   onChange={this.update('username')}
-                   className="login-input"/>
+                  <input type="text" placeholder="Username"
+                     value={this.state.username}
+                     onChange={this.update('username')}
+                     className="login-input"/>
                  </li>
                  <li>
-                 <input type="password" placeholder="Password"
-                    value={this.state.password}
-                    onChange={this.update('password')}
-                    className="login-input"
-                  />
+                   <input type="password" placeholder="Password"
+                      value={this.state.password}
+                      onChange={this.update('password')}
+                      className="login-input"
+                    />
                 </li>
                 <li className="last-list-item">
-                <button className="session-link" type="submit">Log In</button>
+                  <button className="session-link" type="submit">Log In</button>
                 </li>
-            </form>
+              </form>
             </ul>
           </li>
           <li className="demo-login"><button

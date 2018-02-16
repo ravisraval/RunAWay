@@ -13,9 +13,6 @@ ul.landing-header-list {
   background: #333;
   // border-bottom: 3px solid gray;
 
-
-  
-
   ul {
     display: flex;
     // justify-content: space-between;
@@ -88,4 +85,8 @@ ul.landing-header-list {
   padding: 7px;
   border-radius: 2px;
   font-size: 12px;
+}
+
+.login-errors {
+  color: red !important;
 }
