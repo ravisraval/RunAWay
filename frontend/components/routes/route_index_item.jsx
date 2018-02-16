@@ -31,7 +31,7 @@ class RouteIndexItem extends React.Component {
   }
 
   render() {
-    const { route, destroyRoute } = this.props
+    const { route, destroyRoute } = this.props;
     return (
       // <span> { route.elevation_change } </span>
       <li className="route-feed-item">
