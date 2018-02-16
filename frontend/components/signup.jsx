@@ -17,9 +17,9 @@ class SignupForm extends React.Component {
     });
   }
 
-  componntDidUpdate(){
-    this.redirectifLoggedIn();
-  }
+  // componentDidUpdate(){
+  //   this.redirectifLoggedIn();
+  // }
 
   redirectifLoggedIn(){
     if(this.props.loggedIn){
@@ -33,27 +33,31 @@ class SignupForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.loggedIn) {this.props.history.push('/home/workouts')};
+    if (newProps.loggedIn) {
+      this.props.resetErrors();
+      this.props.history.push('/home/workouts')
+    };
   }
 
-  // renderErrors(){
-	// 	return(
-	// 		<ul>
-	// 			{this.props.errors.map( (error, i) => (
-	// 				<li key={`error-${i}`}>
-	// 					{error}
-	// 				</li>
-	// 			))}
-	// 		</ul>
-	// 	);
-	// }
+  renderErrors(){
+    console.log('rendering eror', this.props);
+		return(
+			<ul>
+				{this.props.errors.map( (error, i) => (
+					<li key={`error-${i}`}>
+						{error}
+					</li>
+				))}
+			</ul>
+		);
+	}
 
   render() {
-    // <label className="login-errors">{ this.renderErrors() }</label>
     return (
     <div className="signup-form-container">
       <form onSubmit={this.handleSubmit} className="signup-form-box">
         <h1>Welcome to RunAWay!</h1>
+        <label className="login-errors">{ this.renderErrors() }</label>
         <h2>Sign Up</h2>
         <div className="signup-form">
           <label>Username:
