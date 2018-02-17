@@ -66,7 +66,7 @@ class Map extends React.Component {
     if (this.props.errors) {
       return (
         this.props.errors.map(error => {
-          return (<li className="error" key={error}>{error}</li>);
+          return (<li className="error login-errors" key={error}>{error}</li>);
         })
       );
     }
