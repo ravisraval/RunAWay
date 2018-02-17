@@ -35,23 +35,39 @@ class RouteIndexItem extends React.Component {
     return (
       // <span> { route.elevation_change } </span>
       <li className="route-feed-item">
-        <Link onClick={this.props.openModal} to={`/home/routes/${route.id}`}>
-          <SmallMap route={route}/>
-          <h5 className="route-name-index">{ route.name } </h5>
-        </Link>
-        <ul className="route-friendly-list">
-          {route.bike_ok ? <li> Bike Friendly</li> : null}
-          {route.run_ok ? <li> Run Friendly</li>: null}
-        </ul>
-          <span> Duration: { this.displayDuration() }</span>
-          <span> Distance: {
-              Math.round(100 * route.distance / 1609.34) / 100} m
-             </span>
-         <button onClick={this.handleDelete} className="delete-button" className="delete-route">Delete</button>
-          <span className="created-as-item">Created as a {
-              (route.travel_mode === "BICYCLING")
-               ? "cycling" : "running"
-             } route on { route.created_at.split("T")[0] }.</span>
+
+      <Link
+        onClick={this.props.openModal}
+        to={`/home/routes/${route.id}`}
+      >
+        <SmallMap route={route}/>
+        <h5 className="route-name-index">{ route.name }</h5>
+      </Link>
+
+      <ul className="route-friendly-list">
+        {route.bike_ok ? <li> Bike Friendly</li> : null}
+        {route.run_ok ? <li> Run Friendly</li>: null}
+      </ul>
+
+      <span> Duration: { this.displayDuration() }</span>
+      <span>
+        Distance: {
+          Math.round(100 * route.distance / 1609.34) / 100} m
+       </span>
+
+       <button onClick={this.handleDelete}
+         className="delete-button delete-route"
+       >
+         Delete
+       </button>
+
+       <span className="created-as-item">
+         Created as a {
+          (route.travel_mode === "BICYCLING")
+           ? "cycling" : "running"
+         } route on { route.created_at.split("T")[0] }.
+       </span>
+
       </li>
     );
   }

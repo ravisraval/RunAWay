@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
 class ShowMap extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
+    console.log('showmap', this.props);
     this.state = {
       latLngs: google.maps.geometry.encoding.decodePath(
         this.props.route.waypoints_text),
@@ -13,7 +12,7 @@ class ShowMap extends React.Component {
     };
     this.openModal = this.openModal.bind(this);
   }
-  
+
   openModal() {
     this.setState({ isModalOpen: true })
   }

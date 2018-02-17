@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import ShowMap from './show_map'
-//try making this a modal
-
 
 class RouteShow extends React.Component {
   constructor(props){
@@ -27,7 +25,7 @@ class RouteShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchRoute(this.props.routeId);
+    this.props.fetchRoute(this.props.routeId).then(console.log(this.props));
   }
 
   // <ul className="route-show">
@@ -42,7 +40,7 @@ class RouteShow extends React.Component {
   //   </div>
   // </ul>
   render() {
-    const { route } = this.props;
+    const route = this.props.route;
     return (
     <div ref="map-show" className="route-show-wrap">
       <ShowMap route={route} />

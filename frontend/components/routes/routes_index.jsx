@@ -29,11 +29,7 @@ class RoutesIndex extends React.Component {
   render() {
 
     const routes = this.props.routes[0];
-    console.log('meh routes', routes);
-    if (routes == null) {
-      console.log('routes were null');
-      return null
-    };
+    if (!routes) return null;
     const routeItems = routes.sort().map(route => (
         <RouteIndexItemContainer
           key={ route.id }
@@ -45,15 +41,25 @@ class RoutesIndex extends React.Component {
     );
     return (
       <div className="full-page-component">
-        <Modal className="route-modal" isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
-          <Route path="/home/routes/:routeId" component={RouteShowContainer}/>
+
+        <Modal
+          className="route-modal"
+          isOpen={this.state.isModalOpen}
+          onClose={() => this.closeModal()}
+        >
+          <Route path="/home/routes/:routeId"
+                component={RouteShowContainer}
+          />
         </Modal>
+
         <h1 className="page-header">Your Routes</h1>
         <ul className="routes-list">
           {routeItems}
         </ul>
-        <Link to='/home/new_route'><button className="new-route-btn">New Route</button></Link>
 
+        <Link to='/home/new_route'>
+          <button className="new-route-btn">New Route</button>
+        </Link>
       </div>
     );
   }

@@ -3,10 +3,21 @@ export const allWorkouts = state => (
 );
 
 
+// export const selectWorkout = ({ workouts }, id) => {
+//    const workout = workouts[id] || {};
+//    return workout
+// };
+
 export const selectWorkout = ({ workouts }, id) => {
-   const workout = workouts[id] || {};
-   return workout
+  let selectedWorkout = {};
+  workouts.entities.forEach(workout => {
+    if (workout.id === parseInt(id)) {
+      selectedWorkout = workout;
+    }
+  })
+   return selectedWorkout;
 };
+
 
 export const allRoutes = state => (
   Object.keys(state.routes).map(id => state.routes[id])
@@ -14,6 +25,11 @@ export const allRoutes = state => (
 
 
 export const selectRoute = ({ routes }, id) => {
-   const route = routes[id] || {};
-   return route
+  let selectedRoute = {};
+  routes.entities.forEach(route => {
+    if (route.id === parseInt(id)) {
+      selectedRoute = route;
+    }
+  })
+   return selectedRoute;
 };

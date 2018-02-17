@@ -6,7 +6,7 @@ class Modal extends React.Component {
        return null
 
      let modalStyle = {
-       position: 'absolute',
+       position: 'fixed',
        top: '30%',
        left: '43%',
        transform: 'translate(-50%, -50%)',
