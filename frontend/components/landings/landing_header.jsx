@@ -46,7 +46,7 @@ class LandingHeader extends React.Component{
   }
 
   renderErrors(){
-    console.log(this.props);
+    if (!this.props.errors) return null;
     return(
       <ul>
         {this.props.errors.map( (error, i) => (
@@ -68,8 +68,8 @@ class LandingHeader extends React.Component{
           </li>
           <li>
             <ul className="login-form-list">
-              <label>{ this.renderErrors() }</label>
               <form onSubmit={this.handleSubmit} className="login-form">
+                <label>{ this.renderErrors() }</label>
                 <li>
                   <input type="text" placeholder="Username"
                      value={this.state.username}

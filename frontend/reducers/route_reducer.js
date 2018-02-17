@@ -1,31 +1,39 @@
 import merge from 'lodash/merge';
 
-import {RECEIVE_ERRORS} from '../actions/session_actions';
-
 import {
   RECEIVE_ROUTES,
   RECEIVE_ROUTE,
-  REMOVE_ROUTE
+  REMOVE_ROUTE,
+  RECEIVE_ROUTES_ERRORS
 } from '../actions/route_actions';
 
-const RouteReducer = (state = {}, action) => {
-  Object.freeze(state)
-  let newState = merge({}, state);
+const defaultState = Object.freeze({
+  entities: [],
+  errors: []
+})
+const RouteReducer = (state = defaultState, action) => {
+  Object.freeze(state);
+
+  let nextState;
 
   switch(action.type) {
     case RECEIVE_ROUTES:
-      return action.routes;
+      nextState = Object.assign(
+        {}, state, { entities: Object.values(action.routes) }
+      );
+      return nextState;
     case RECEIVE_ROUTE:
-      const newRoute = {[action.route.id]: action.route};
-      return merge({}, state, newRoute);
+      nextState = Object.assign({},state);
+      nextState.entities[action.route.id] = action.route;
+      return nextState;
     case REMOVE_ROUTE:
-      delete newState[action.route.id];
+      nextState = Object.assign({}, state);
+      delete newState.entities[action.route.id];
       return newState;
-    case RECEIVE_ERRORS:
+    case RECEIVE_ROUTES_ERRORS:
         const errors = action.errors;
-        return merge({}, {
-          errors
-        });
+        nextState = Object.assign({}, state, { errors });
+        return nextState;
     default:
       return state;
   }

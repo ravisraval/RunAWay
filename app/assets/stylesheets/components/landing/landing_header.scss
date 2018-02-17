@@ -21,20 +21,17 @@ ul.landing-header-list {
     font-size: 18px;
     text-align: center;
     width: 100%;
+
     li {
       color:black;
     }
 
-    li:hover {
-      cursor: pointer;
-    }
     li.title {
       font-size: 25px;
       color: white;
       padding-right: 5%;
       padding-left: 5%;
       border-right: 2px solid grey;
-      cursor: default;
 
     }
   }
@@ -75,7 +72,7 @@ ul.landing-header-list {
   background-color: rgba(255,255,255,.5);
 }
 
-.session-link:active{
+.session-link:active {
   outline:none;
   transform: translate(0, 1px);
 }

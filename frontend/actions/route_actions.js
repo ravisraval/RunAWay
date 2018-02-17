@@ -4,7 +4,7 @@ export const RECEIVE_ROUTES = 'RECEIVE_ROUTES';
 export const RECEIVE_ROUTE = 'RECEIVE_ROUTE';
 export const RECEIVE_REVIEW = 'RECEIVE_REVIEW';
 export const REMOVE_ROUTE = "REMOVE_ROUTE";
-// export const REQUEST_ROUTE = 'REQUEST_ROUTE';
+export const RECEIVE_ROUTES_ERRORS = "RECEIVE_ROUTES_ERRORS";
 
 export const receiveRoutes = routes => ({
   type: RECEIVE_ROUTES,
@@ -21,29 +21,37 @@ export const removeRoute = route => ({
   route
 });
 
+export const receiveRoutesErrors = errors => ({
+  type: RECEIVE_ROUTES_ERRORS,
+  errors
+});
+
 export const fetchRoutes = () => dispatch => (
-  APIUtil.fetchRoutes().then(routes => (
-    dispatch(receiveRoutes(routes))
-  ))
+  APIUtil.fetchRoutes().then(
+    routes => dispatch(receiveRoutes(routes)),
+    err => dispatch(receiveRoutesErrors(err.responseJSON))
+  )
 );
 
 export const fetchRoute = id => dispatch => (
-  APIUtil.fetchRoute(id).then(route => (
-    dispatch(receiveRoute(route))
-  ))
+  APIUtil.fetchRoute(id).then(
+    route => dispatch(receiveRoute(route)),
+    err => dispatch(receiveRoutesErrors(err.responseJSON))
+  )
 );
 
 export const createRoute = route => dispatch => (
-  APIUtil.createRoute(route).then(route => {
-    return (
-      dispatch(receiveRoute(route))
-    );
-  }, err => {
-  })
+  APIUtil.createRoute(route).then(
+    route => dispatch(receiveRoute(route)),
+    err => dispatch(receiveRoutesErrors(err.responseJSON))
+  )
 );
 
 export const updateRoute = route => dispatch => (
-  APIUtil.updateRoute(route).then(route => dispatch(receiveRoute(route)))
+  APIUtil.updateRoute(route).then(
+    route => dispatch(receiveRoute(route)),
+    err => dispatch(receiveRoutesErrors(err.responseJSON))
+  )
 );
 
 export const deleteRoute = route => dispatch => (

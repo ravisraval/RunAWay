@@ -27,8 +27,13 @@ class RoutesIndex extends React.Component {
   }
 
   render() {
-    const {routes} = this.props;
-    if (!routes) {return null};
+
+    const routes = this.props.routes[0];
+    console.log('meh routes', routes);
+    if (routes == null) {
+      console.log('routes were null');
+      return null
+    };
     const routeItems = routes.sort().map(route => (
         <RouteIndexItemContainer
           key={ route.id }
