@@ -19,15 +19,21 @@ class NewWorkout extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRadio = this.handleRadio.bind(this);
     this.handleRouteSelect = this.handleRouteSelect.bind(this);
+    this.update = this.update.bind(this);
   }
   componentDidMount() {
     this.props.fetchRoutes();
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    this.props.createWorkout(this.state)
+    if (this.state.title.length === 0) {
+      this.props.errors.push('Must set workout title');
+      this.forceUpdate();
+    } else {
+      e.preventDefault();
+      this.props.createWorkout(this.state)
       .then(data => this.props.history.push(`/home/workouts/${data.workout.id}`));
+    }
   }
 
   update(property) {
@@ -65,7 +71,7 @@ class NewWorkout extends React.Component {
     return (
       <section className="full-page-component">
         <h1 className="page-header">Log a New Workout</h1>
-        
+
         <form className="workout-form" onSubmit={this.handleSubmit}>
           <section className="form-section">
             <label className="boxed-inputs">
