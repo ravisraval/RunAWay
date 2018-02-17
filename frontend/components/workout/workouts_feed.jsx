@@ -14,9 +14,9 @@ class WorkoutsFeed extends React.Component {
   }
 
   render() {
-    const {workouts} = this.props;
+    const workouts = this.props.workouts[0];
     if (!workouts) {return null};
-    const workoutItems = this.props.workouts.map(workout => (
+    const workoutItems = workouts.map(workout => (
         <WorkoutFeedItemContainer
           key={ workout.id }
           workout={ workout }/>

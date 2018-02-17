@@ -1,33 +1,43 @@
 import merge from 'lodash/merge';
 
-import {RECEIVE_ERRORS} from '../actions/session_actions';
 import {
   RECEIVE_WORKOUTS,
   RECEIVE_WORKOUT,
-  REMOVE_WORKOUT
+  REMOVE_WORKOUT,
+  RECEIVE_WORKOUTS_ERRORS
 } from '../actions/workout_actions';
 
-const WorkoutReducer = (state = {}, action) => {
-  Object.freeze(state)
-  let newState = merge({}, state);
+const defaultState = Object.freeze({
+  entities: [],
+  errors: []
+});
+
+const RouteReducer = (state = defaultState, action) => {
+  Object.freeze(state);
+
+  let nextState;
 
   switch(action.type) {
     case RECEIVE_WORKOUTS:
-      return action.workouts;
+      nextState = Object.assign(
+        {}, state, { entities: Object.values(action.workouts) }
+      );
+      return nextState;
     case RECEIVE_WORKOUT:
-      const newWorkout = {[action.workout.id]: action.workout};
-      return merge({}, state, newWorkout);
+      nextState = Object.assign({},state);
+      nextState.entities[action.workout.id] = action.workout;
+      return nextState;
     case REMOVE_WORKOUT:
-      delete newState[action.workout.id];
+      nextState = Object.assign({}, state);
+      delete newState.entities[action.workout.id];
       return newState;
-    case RECEIVE_ERRORS:
-      const errors = action.errors;
-      return merge({}, {
-        errors
-      });
+    case RECEIVE_WORKOUTS_ERRORS:
+        const errors = action.errors;
+        nextState = Object.assign({}, state, { errors });
+        return nextState;
     default:
       return state;
   }
 };
 
-export default WorkoutReducer;
+export default RouteReducer;

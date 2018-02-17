@@ -10,7 +10,8 @@ import {
 const defaultState = Object.freeze({
   entities: [],
   errors: []
-})
+});
+
 const RouteReducer = (state = defaultState, action) => {
   Object.freeze(state);
 
