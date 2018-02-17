@@ -1,11 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-
-// const BenchShow = ({ workout, benchId, fetchBench }) => {
-// <img className="index-image" src={workout.route.}/> put this in line 12.5
 class WorkoutShow extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -34,14 +30,15 @@ class WorkoutShow extends React.Component {
         <li>Notes: {workout.notes}</li>
       </ul>
 
-        <button
-          onClick={this.handleDelete} className="delete-button">
-          Delete
-        </button>
+      <button
+        onClick={this.handleDelete} className="delete-button"
+      >
+        Delete
+      </button>
 
     </div>
-  );
-};
+    );
+  };
 };
 
 export default withRouter(WorkoutShow);

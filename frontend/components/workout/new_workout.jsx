@@ -52,15 +52,15 @@ class NewWorkout extends React.Component {
  handleRouteSelect(e) {
    return e => {
      this.setState({
-     route_id: e.target.value.id,
-     distance: e.target.value.distance
-   });
- }
+       route_id: e.target.value.id,
+       distance: e.target.value.distance
+     });
+   }
  }
 
   render() {
     const { biked } = this.state;
-    const { routes } = this.props;
+    const routes = this.props.routes[0] || [];
     // also this could be a scrolling modal IF TIME, MAKE SELECT ROUTE A SCROLLING MODAL
     return (
       <section className="full-page-component">
@@ -72,7 +72,6 @@ class NewWorkout extends React.Component {
 
           <section className="form-section">
             <label className="boxed-inputs">
-
               <h3>Workout Title</h3>
               <div>
                 <p><input
@@ -99,7 +98,6 @@ class NewWorkout extends React.Component {
               />mi</p>
             </div>
             </label>
-
 
             <label className="boxed-inputs">
               <h3>Duration</h3>
@@ -174,17 +172,21 @@ class NewWorkout extends React.Component {
               </div>
             </div>
 
-
-
             <label><h3>Add a Route</h3>
 
-              <select className="workout-input"
+              <select
+                className="workout-input"
                 value={this.state.route}
-                onChange={this.handleRouteSelect}>
-                <option selected="selected" value="null">Select Premade Route (optional)</option>
+                onChange={this.handleRouteSelect}
+              >
+                <option selected="selected" value="null">
+                  Select Premade Route (optional)
+                </option>
+
                 {routes.map((route) => {
                   return <option value={route} key={route.id}>{route.name}</option>;
                   })}
+
               </select>
 
             </label>
@@ -200,13 +202,15 @@ class NewWorkout extends React.Component {
                 onChange={this.update('notes')}
                 rows="5"
                 cols="50"
-              ></textarea>
+              />
 
             </label>
 
           </section>
 
-          <button className="submit-button" type="submit">Create Workout</button>
+          <button className="submit-button" type="submit">
+            Create Workout
+          </button>
 
         </form>
 

@@ -6,7 +6,7 @@ import { allRoutes } from '../../reducers/selectors';
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
-  errors: state.errors,
+  errors: state.workouts.errors,
   routes: allRoutes(state)
 });
 

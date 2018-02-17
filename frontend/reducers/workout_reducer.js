@@ -29,8 +29,8 @@ const RouteReducer = (state = defaultState, action) => {
       return nextState;
     case REMOVE_WORKOUT:
       nextState = Object.assign({}, state);
-      delete newState.entities[action.workout.id];
-      return newState;
+      delete nextState.entities[action.workout.id];
+      return nextState;
     case RECEIVE_WORKOUTS_ERRORS:
         const errors = action.errors;
         nextState = Object.assign({}, state, { errors });

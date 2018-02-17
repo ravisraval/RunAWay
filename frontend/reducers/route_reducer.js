@@ -29,8 +29,8 @@ const RouteReducer = (state = defaultState, action) => {
       return nextState;
     case REMOVE_ROUTE:
       nextState = Object.assign({}, state);
-      delete newState.entities[action.route.id];
-      return newState;
+      delete nextState.entities[action.route.id];
+      return nextState;
     case RECEIVE_ROUTES_ERRORS:
         const errors = action.errors;
         nextState = Object.assign({}, state, { errors });

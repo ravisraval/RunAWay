@@ -2,12 +2,6 @@ export const allWorkouts = state => (
   Object.keys(state.workouts).map(id => state.workouts[id])
 );
 
-
-// export const selectWorkout = ({ workouts }, id) => {
-//    const workout = workouts[id] || {};
-//    return workout
-// };
-
 export const selectWorkout = ({ workouts }, id) => {
   let selectedWorkout = {};
   workouts.entities.forEach(workout => {
@@ -18,11 +12,9 @@ export const selectWorkout = ({ workouts }, id) => {
    return selectedWorkout;
 };
 
-
 export const allRoutes = state => (
   Object.keys(state.routes).map(id => state.routes[id])
 );
-
 
 export const selectRoute = ({ routes }, id) => {
   let selectedRoute = {};
