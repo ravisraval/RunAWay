@@ -7,7 +7,7 @@ import Map from './map';
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
-  errors: state.session.errors
+  errors: state.routes.errors
 });
 
 const mapDispatchToProps = dispatch => ({

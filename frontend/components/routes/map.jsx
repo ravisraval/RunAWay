@@ -62,19 +62,18 @@ class Map extends React.Component {
     this.listenforClick();
   }
 
-  // errors() {
-  //   if (this.props.errors) {
-  //     return (
-  //       this.props.errors.map(error => {
-  //         return (<li className="error" key={error}>{error}</li>);
-  //       })
-  //     );
-  //   }
-  // }
+  errors() {
+    if (this.props.errors) {
+      return (
+        this.props.errors.map(error => {
+          return (<li className="error" key={error}>{error}</li>);
+        })
+      );
+    }
+  }
 
   handleSubmit(e) {
     e.preventDefault();
-    //
     let prop = {
       travel_mode: this.state.travel_mode,
       waypoints_text: this.state.waypoints_text,
@@ -260,11 +259,11 @@ class Map extends React.Component {
    * we give it a 'ref' so we can easily get a pointer to the
    * actual dom node up in componentDidMount
    */
-  //  <ul>{this.errors()}</ul>
 // <button class="bttn-jelly bttn-sm bttn-warning">small</button>
     return (
       <div>
         <div className="map-bar">
+          <ul>{this.errors()}</ul>
           <input id="pac-input" className="controls" type="text" placeholder="       Search here" autocomplete="on"/>
           <p className="search-icon"></p>
           <input className="name-route-input" onChange={this.update('name')} placeholder="Route name - required"/>
