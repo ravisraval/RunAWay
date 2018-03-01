@@ -12,7 +12,7 @@ class WorkoutFeedItem extends React.Component {
   handleDelete(){
     this.props.destroyWorkout()
   }
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchRoute();
   }
   render() {

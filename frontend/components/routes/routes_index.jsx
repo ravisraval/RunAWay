@@ -22,7 +22,7 @@ class RoutesIndex extends React.Component {
     this.setState({ isModalOpen: false })
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchRoutes();
   }
 

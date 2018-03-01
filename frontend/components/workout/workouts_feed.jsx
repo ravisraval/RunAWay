@@ -9,7 +9,7 @@ class WorkoutsFeed extends React.Component {
 
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchWorkouts();
   }
 

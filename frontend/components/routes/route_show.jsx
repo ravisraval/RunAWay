@@ -24,7 +24,7 @@ class RouteShow extends React.Component {
     return `${hsep}${hours}:${msep}${minutes}:${ssep}${sec}`;
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchRoute(this.props.routeId).then(console.log(this.props));
   }
 

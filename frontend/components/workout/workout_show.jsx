@@ -8,7 +8,7 @@ class WorkoutShow extends React.Component {
     this.handleDelete = this.handleDelete.bind(this)
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchWorkout(this.props.workoutId);
   }
 
